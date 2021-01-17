@@ -66,6 +66,9 @@ main#content a {
     color: #0059b3;
     text-decoration: none;
 }
+main#content a:visited{
+    color: #8900b3;
+}
 
 main#content a:hover {
     text-decoration: underline;
