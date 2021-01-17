@@ -58,6 +58,10 @@ header#banner nav ul li a {
     color: #454545;
 }
 
+main#content {
+    margin-bottom:200px;
+}
+
 main#content a {
     color: #007dfa;
     text-decoration: none;
@@ -258,10 +262,20 @@ main#content section.footnotes {
     font-size: 0.9em;
 }
 
-footer#footer {
+footer {
     font-size: 14px;
     font-size: 1.4rem;
     font-weight: 300;
     color: #949494;
-    margin: 40px 0;
+    position: fixed;
+    height: 150px;
+    width:100%;
+    top: calc(100% - 110px);
+    background:white;
+}
+footer > div{
+    padding-top:10px;
+    border-top: 1px solid #dddddd;
+    width:225px;
+    position:relative;
 }
