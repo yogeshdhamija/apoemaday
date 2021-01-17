@@ -1,6 +1,6 @@
 baseURL = "https://apoemaday.page"
 title = "a poem a day"
-theme = "etch"
+theme = "custom"
 languageCode = "en-US"
 enableInlineShortcodes = true
 pygmentsCodeFences = true
@@ -8,7 +8,7 @@ pygmentsUseClasses = true
 
 [params]
   description = "a Poem a Day"
-  copyright = ""
+  footerText = '"I wish I could show you when you are lonely or in darkness the astonishing light of your own being." - Hafiz of Shiraz'
   dark = "off"
   highlight = true
 
