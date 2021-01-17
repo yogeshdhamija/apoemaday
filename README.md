@@ -1,4 +1,4 @@
-# My Website
+# A Poem A Day
 
 Uses [hugo](https://gohugo.io/) to build static pages.
 - See `config.toml` for configuration.

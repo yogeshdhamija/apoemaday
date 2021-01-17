@@ -1,3 +1,35 @@
-baseURL = "http://example.org/"
-languageCode = "en-us"
-title = "My New Hugo Site"
+baseURL = "https://apoemaday.page"
+title = "a poem a day"
+theme = "etch"
+languageCode = "en-US"
+enableInlineShortcodes = true
+pygmentsCodeFences = true
+pygmentsUseClasses = true
+
+[params]
+  description = "a Poem a Day"
+  copyright = ""
+  dark = "off"
+  highlight = true
+
+[menu]
+  [[menu.main]]
+    identifier = "from-me"
+    name = " and this one, from me."
+    title = "my special poem"
+    url = "my-special-poem"
+    weight = 10
+
+  #[[menu.main]]
+  #  identifier = "about"
+  #  name = "about"
+  #  title = "about"
+  #  url = "/about/"
+  #  weight = 20
+
+[permalinks]
+  poems = "/:title/"
+
+[markup.goldmark.renderer]
+  # Allows HTML in Markdown
+  unsafe = true
