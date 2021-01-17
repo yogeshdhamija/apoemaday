@@ -310,6 +310,7 @@ footer > div{
 
 .circle span {
     color: darkgrey;
+    font-family: initial !important;
     font-weight: bold;
     font-size: 16px;
     top:-1px;
