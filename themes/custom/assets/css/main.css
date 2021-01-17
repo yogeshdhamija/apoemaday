@@ -240,9 +240,19 @@ main#content pre {
 
 main#content code {
     font-size: 0.96em;
-    padding: 0 5px;
 }
 
+::-webkit-scrollbar {
+    -webkit-appearance: none;
+    width: 3px;
+    height: 3px;
+}
+  
+::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    background-color: #dddddd;
+}
+  
 main#content pre {
     display: block;
     overflow-x: auto;
