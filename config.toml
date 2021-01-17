@@ -8,17 +8,16 @@ pygmentsUseClasses = true
 
 [params]
   description = "a Poem a Day"
-  footerText = '"I wish I could show you when you are lonely or in darkness the astonishing light of your own being." - Hafiz of Shiraz'
   dark = "off"
   highlight = true
 
 [menu]
-  [[menu.main]]
-    identifier = "from-me"
-    name = " and this one, from me."
-    title = "my special poem"
-    url = "my-special-poem"
-    weight = 10
+  #[[menu.main]]
+  #  identifier = "from-me"
+  #  name = " and this one, from me."
+  #  title = "my special poem"
+  #  url = "my-special-poem"
+  #  weight = 10
 
   #[[menu.main]]
   #  identifier = "about"
