@@ -1,7 +1,7 @@
 ---
 title: "my special poem"
 date: 2021-01-17T01:31:31-06:00
-draft: true
+draft: false
 ---
 
 > Poems can be thought-makers  

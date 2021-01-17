@@ -7,9 +7,7 @@ Uses [hugo](https://gohugo.io/) to build static pages.
     - Note: will require you to have pulled the git submodules (see below).
 
 Has many submodules, including:
-- The [resume / cv](https://github.com/yogeshdhamija/cv) .
-    - Don't worry-- there's a private branch in that repo which does not include address and phone number.
-- The theme, [diary](https://github.com/AmazingRise/hugo-theme-diary).
+- The theme, [etch](https://github.com/LukasJoswiak/etch).
 - The output directory, which points to the [GitHub Pages repository](https://github.com/yogeshdhamija/yogeshdhamija.github.io), which is served to the web.
 
 To update submodules, run:
