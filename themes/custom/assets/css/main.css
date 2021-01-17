@@ -309,21 +309,11 @@ footer > div{
 }
 
 .circle span {
-    color: darkgrey;
-    font-family: Helvetica, Arial;
-    font-weight: bold;
-    font-size: 16px;
-    top:0px;
+    background-color: darkgrey;
     position: relative;
+    top: -2px;
     left: 7px;
-    -webkit-font-smoothing: antialiased;
-    -moz-font-smoothing: antialiased;
-    -o-font-smoothing: antialiased;
-    transition: all .8s;
-    -webkit-transition: all .8s;
-    -moz-transition: all .8s;
-    -o-transition: all .8s;
-    -webkit-transform: rotate(0deg);
+    transition: background-color .8s;
 }
 
 .circle:before,
@@ -343,7 +333,7 @@ footer > div{
 }
 
 .circle:after {
-    -webkit-transform: rotate(45deg);
+    transform: rotate(45deg);
 }
 
 .circle:hover:before,
@@ -355,18 +345,51 @@ footer > div{
 }
 
 .circle:hover:before {
-    -webkit-transform: rotate(-400deg);
+    transform: rotate(-400deg);
 }
 
 .circle:hover:after {
-    -webkit-transform: rotate(-355deg);
+    transform: rotate(-355deg);
 }
 
-.circle:hover>span {
-    color: red;
-    -webkit-transform: rotate(0deg);
+.circle:hover>span,
+.circle:hover>span:before,
+.circle:hover>span:after{
+    background-color: red;
 }
 
 .circleLink:hover {
     text-decoration: none !important;
+}
+
+.heart {
+  display: inline-block;
+  height: 5px;
+  margin: 0 3px;
+  position: relative;
+  top: 0;
+  transform: rotate(-45deg);
+  width: 5px;
+  background-color: darkgrey;
+}
+
+.heart:before,
+.heart:after {
+  content: "";
+  background-color: darkgrey;
+  border-radius: 50%;
+  height: 5px;
+  position: absolute;
+  width: 5px;
+  transition: background-color .8s;
+}
+
+.heart:before {
+  top: -3px;
+  left: 0;
+}
+
+.heart:after {
+  left: 3px;
+  top: 0;
 }
