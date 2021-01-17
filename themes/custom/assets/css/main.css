@@ -309,8 +309,10 @@ footer > div{
 }
 
 .circle span {
-    color: transparent;
+    color: darkgrey;
     font-weight: bold;
+    font-size: 16px;
+    top:-1px;
     position: relative;
     left: 8px;
     -webkit-font-smoothing: antialiased;
