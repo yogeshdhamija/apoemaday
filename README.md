@@ -12,5 +12,6 @@ Has git submodules, including:
 
 To update submodules, run:  
 - `git submodule update --remote --recursive`  
+
 To pull submodules for the first time in a freshly cloned repository, run:  
 - `git submodule update --init --remote --recursive`
