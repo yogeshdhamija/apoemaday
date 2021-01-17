@@ -63,7 +63,7 @@ main#content {
 }
 
 main#content a {
-    color: #007dfa;
+    color: #0059b3;
     text-decoration: none;
 }
 
@@ -266,7 +266,7 @@ footer {
     font-size: 14px;
     font-size: 1.4rem;
     font-weight: 300;
-    color: #949494;
+    color: #616161;
     position: fixed;
     height: 150px;
     width:100%;
