@@ -292,3 +292,78 @@ footer > div{
     width:250px;
     position:relative;
 }
+
+.circle {
+    background: rgb(255, 255, 255);
+    border-radius: 100%;
+    -webkit-border-radius: 100%;
+    -moz-border-radius: 100%;
+    -o-border-radius: 100%;
+    display: inline-block;
+    position: relative;
+    margin-bottom: -5px;
+    margin-right: 10px;
+    width: 25px;
+    height: 25px;
+    overflow: hidden;
+}
+
+.circle span {
+    color: transparent;
+    font-weight: bold;
+    position: relative;
+    left: 8px;
+    -webkit-font-smoothing: antialiased;
+    -moz-font-smoothing: antialiased;
+    -o-font-smoothing: antialiased;
+    transition: all .8s;
+    -webkit-transition: all .8s;
+    -moz-transition: all .8s;
+    -o-transition: all .8s;
+    -webkit-transform: rotate(0deg);
+}
+
+.circle:before,
+.circle:after {
+    border-radius: 100%;
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: inherit;
+    height: inherit;
+    box-shadow: inset 7px 0 0 rgba(0, 0, 0, 0.1),
+        inset 0 7px 0 rgba(0, 0, 0, 0.1),
+        inset -7px 0 0 rgba(0, 0, 0, 0.1),
+        inset 0 -7px 0 rgba(0, 0, 0, 0.1);
+    transition: all 0.75s;
+}
+
+.circle:after {
+    -webkit-transform: rotate(45deg);
+}
+
+.circle:hover:before,
+.circle:hover:after {
+    box-shadow: inset 2px 0 0 rgba(255, 0, 0, 0.5),
+        inset 0 2px 0 rgba(252, 150, 0, 0.5),
+        inset -2px 0 0 rgba(0, 255, 0, 0.5),
+        inset 0 -2px 0 rgba(0, 150, 255, 0.5);
+}
+
+.circle:hover:before {
+    -webkit-transform: rotate(-400deg);
+}
+
+.circle:hover:after {
+    -webkit-transform: rotate(-355deg);
+}
+
+.circle:hover>span {
+    color: red;
+    -webkit-transform: rotate(0deg);
+}
+
+.circleLink:hover {
+    text-decoration: none !important;
+}
