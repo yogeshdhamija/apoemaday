@@ -14,7 +14,7 @@ jobs:
       - name: Install Hugo
         run: sudo apt-get install hugo
       - name: Get Hugo Version
-        run: hugo -v
+        run: hugo version
       - name: Deploy
         run: |
           ./build.sh
