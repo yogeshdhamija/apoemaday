@@ -12,8 +12,8 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - name: Install Hugo
-        run: sudo apt-get install hugo
-      - name: Get Hugo Version
+        uses: peaceiris/actions-hugo@v2.4.13
+      - name: Log Hugo Version
         run: hugo version
       - name: Deploy
         run: |
