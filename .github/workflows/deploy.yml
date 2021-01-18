@@ -20,5 +20,6 @@ jobs:
           ./build.sh
           git config user.name "GitHub Deploy Action"
           git config user.email ""
-          git commit -am "auto-deploy by github actions"
+          git add docs/
+          git commit -m "auto-deploy by github actions"
           git push
