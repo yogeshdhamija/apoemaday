@@ -1,0 +1,22 @@
+name: deploy
+
+on:
+  schedule:
+    - cron: 0 6 * * *
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Install Hugo
+        run: apt-get install hugo
+      - name: Deploy
+        run: |
+          ./build.sh
+          git config user.name "GitHub Deploy Action"
+          git config user.email ""
+          git commit -am "auto-deploy by github actions"
+          git push
