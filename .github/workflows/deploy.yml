@@ -12,7 +12,7 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - name: Install Hugo
-        run: apt-get install hugo
+        run: sudo apt-get install hugo
       - name: Deploy
         run: |
           ./build.sh
