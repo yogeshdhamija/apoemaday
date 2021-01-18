@@ -3,13 +3,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     {{ with .Site.Params.description -}}
     <meta name="description" content="{{ . }}">
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-2ZPRNX1RYF"></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-      gtag('config', 'G-2ZPRNX1RYF');
-    </script>
 
     {{ end }}
     {{ printf `<link rel="shortcut icon" href="%s">` ("favicon.ico" | absURL) | safeHTML }}
@@ -34,6 +27,14 @@
 
     {{ $css := $resources | resources.Concat "css/style.css" | minify }}
     {{ printf `<link rel="stylesheet" href="%s">` $css.RelPermalink | safeHTML }}
+
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-2ZPRNX1RYF"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-2ZPRNX1RYF');
+    </script>
 
     <title>{{ .Title }}</title>
 </head>
