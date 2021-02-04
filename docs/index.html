@@ -1,13 +1,40 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <title>A Poem A Day</title>
-        <link rel="icon" href="favicon.ico" type="image/x-icon"/>
-    </head>
-    <body>
 
-    </body>
-    <script>
+<head>
+    <title>A Poem A Day</title>
+    <link rel="icon" href="favicon.ico" type="image/x-icon" />
+</head>
 
-    </script>
+<body>
+    <div id="container"></div>
+</body>
+<style>
+    body {
+        background-color: black;
+    }
+    @keyframes firefly {
+        0% {background-color:black; opacity:1;}
+        50% {background-color:yellow;opacity: 1;}
+        100% {background-color:black;opacity:0;}
+    }
+</style>
+<script src="helpers.js"></script>
+<script src="backgrounds/backgrounds.js"></script>
+<script src="chest/chest.js"></script>
+<script>
+    const BACKGROUND = BACKGROUNDS.random();
+
+    function draw(){
+        document.getElementById("container").innerHTML="";
+
+        const scale = calculateScaling(BACKGROUND);
+        addBackground("container", BACKGROUND, scale);
+        addChest("container", BACKGROUND, CHEST, scale);
+        addFireflies("container");
+    }
+    window.addEventListener('resize', draw);
+    draw();
+</script>
+
 </html>
