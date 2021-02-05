@@ -28,7 +28,16 @@ const BACKGROUNDS = [
     {
         name: "slovakia",
         linkToImage: "backgrounds/slovakia.jpg",
-        fireflies: FIREFLIES_DEFAULT,
+        fireflies: {
+            ...FIREFLIES_DEFAULT,
+            largeGroup: {
+                fireflyCount: 70,
+                positionVariation: {
+                    y: 50,
+                    x: 30
+                }
+            }
+        },
         widthInPixels: 1600,
         heightInPixels: 1200,
         chest: {
@@ -37,16 +46,7 @@ const BACKGROUNDS = [
             widthInPixels: 100,
             heightInPixels: 70,
         },
-        fireflyGroups: [
-            {
-                pixelsFromTop:400,
-                pixelsFromLeft:900,
-            },
-            {
-                pixelsFromTop:1000,
-                pixelsFromLeft:1600,
-            },
-        ]
+        fireflyGroups: [ ]
     },
     {
         name: "creek",
