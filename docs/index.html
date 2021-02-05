@@ -13,25 +13,59 @@
     body {
         background-color: black;
     }
+
+    @keyframes left {
+        0% {}
+        50% { margin-left:-10px; }
+        100% { margin-left:-15px; }
+    }
+    @keyframes right {
+        0% {}
+        50% { margin-left:10px; }
+        100% { margin-left:15px; }
+    }
+    @keyframes up {
+        0% {}
+        50% { margin-top:-10px; }
+        100% { margin-top: -15px; }
+    }
+    @keyframes down {
+        0% {}
+        50% { margin-top:10px; }
+        100% { margin-top:15px; }
+    }
+
     @keyframes firefly {
-        0% {background-color:black; opacity:1;}
-        50% {background-color:yellow;opacity: 1;}
-        100% {background-color:black;opacity:0;}
+        0% {
+            background-color: black;
+            opacity: 1;
+        }
+
+        50% {
+            background-color: yellow;
+            opacity: 1;
+        }
+
+        100% {
+            background-color: black;
+            opacity: 0;
+        }
     }
 </style>
 <script src="helpers.js"></script>
 <script src="backgrounds/backgrounds.js"></script>
 <script src="chest/chest.js"></script>
+<script src="fireflies.js"></script>
 <script>
     const BACKGROUND = BACKGROUNDS.random();
 
-    function draw(){
-        document.getElementById("container").innerHTML="";
+    function draw() {
+        document.getElementById("container").innerHTML = "";
 
         const scale = calculateScaling(BACKGROUND);
         addBackground("container", BACKGROUND, scale);
         addChest("container", BACKGROUND, CHEST, scale);
-        addFireflies("container");
+        addFireflies("container", FIREFLIES, BACKGROUND, CHEST, scale);
     }
     window.addEventListener('resize', draw);
     draw();

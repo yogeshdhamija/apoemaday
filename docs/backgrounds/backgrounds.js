@@ -7,6 +7,16 @@ const BACKGROUNDS = [
         bottomLeftCornerPositionOfChest: {
             pixelsFromTop: 765,
             pixelsFromLeft: 200
-        }
+        },
+        fireflyGroups: [
+            {
+                pixelsFromTop:400,
+                pixelsFromLeft:900,
+            },
+            {
+                pixelsFromTop:1000,
+                pixelsFromLeft:1600,
+            },
+        ]
     }
 ]
