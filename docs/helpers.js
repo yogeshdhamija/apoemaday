@@ -65,13 +65,14 @@ function blink(elementId, fireflies, pixelsFromTop, pixelsFromLeft) {
     window.setTimeout(() => img.remove(), 5000);
 }
 
-function addSmallFireflyGroup(elementId, fireflies, pixelsFromTop, pixelsFromLeft) {
-    for (let i = 0; i < fireflies.smallGroup.fireflyCount; i++) {
-        const interval = window.setInterval(() => {
-            const top = vary(fireflies.smallGroup.positionVariation.y, pixelsFromTop);
-            const left = vary(fireflies.smallGroup.positionVariation.x, pixelsFromLeft);
-            blink(elementId, fireflies, top, left)
-        },
+function addFireflyGroup(elementId, fireflies, fireflyGroup, scale) {
+    for (let i = 0; i < fireflyGroup.fireflyCount; i++) {
+        const interval = window.setInterval(
+            () => {
+                const top = vary(fireflyGroup.positionVariation.y, scale * fireflyGroup.pixelsFromTop);
+                const left = vary(fireflyGroup.positionVariation.x, scale * fireflyGroup.pixelsFromLeft);
+                blink(elementId, fireflies, top, left)
+            },
             vary(fireflies.offTimeVariation, fireflies.averageOffSeconds) * 1000
         );
         window.addEventListener('resize', () => window.clearInterval(interval));
@@ -80,35 +81,15 @@ function addSmallFireflyGroup(elementId, fireflies, pixelsFromTop, pixelsFromLef
 
 function addSmallFireflyGroups(elementId, background, scale) {
     for (let i = 0; i < background.fireflyGroups.length; i++) {
-        addSmallFireflyGroup(
+        addFireflyGroup(
             elementId,
             background.fireflies,
-            scale * background.fireflyGroups[i].pixelsFromTop,
-            scale * background.fireflyGroups[i].pixelsFromLeft
+            background.fireflyGroups[i],
+            scale
         );
-    }
-}
-
-function addLargeFireflyGroup(elementId, background, scale) {
-    for (let i = 0; i < background.fireflies.largeGroup.fireflyCount; i++) {
-        const interval = window.setInterval(() => {
-            const top = vary(
-                background.fireflies.largeGroup.positionVariation.y,
-                scale * (background.chest.pixelsFromTop - (background.chest.heightInPixels * 1.5))
-            );
-            const left = vary(
-                background.fireflies.largeGroup.positionVariation.x,
-                scale * (background.chest.pixelsFromLeft + (background.chest.widthInPixels / 2)
-                ));
-            blink(elementId, background.fireflies, top, left)
-        },
-            vary(background.fireflies.offTimeVariation, background.fireflies.averageOffSeconds) * 1000
-        );
-        window.addEventListener('resize', () => window.clearInterval(interval));
     }
 }
 
 function addFireflies(elementId, background, scale) {
     addSmallFireflyGroups(elementId, background, scale);
-    addLargeFireflyGroup(elementId, background, scale);
 }
