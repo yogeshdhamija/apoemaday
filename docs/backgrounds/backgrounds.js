@@ -1,4 +1,4 @@
-const FIREFLIES_DEFAULT = {
+const DEFAULT_FIREFLY_SETTINGS = {
     averageOffSeconds: 9,
     offTimeVariation: 5,
 
@@ -13,7 +13,7 @@ const BACKGROUNDS = [
     {
         name: "creek",
         linkToImage: "backgrounds/creek.jpg",
-        fireflies: FIREFLIES_DEFAULT,
+        fireflySettings: DEFAULT_FIREFLY_SETTINGS,
         widthInPixels: 1920,
         heightInPixels: 1280,
         chest: {

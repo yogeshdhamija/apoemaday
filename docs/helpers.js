@@ -44,7 +44,7 @@ function vary(variation, average) {
     return (randomBetween(-1, 1) * variation) + average;
 }
 
-function blink(elementId, fireflies, pixelsFromTop, pixelsFromLeft) {
+function blink(elementId, fireflySettings, pixelsFromTop, pixelsFromLeft) {
     const img = document.createElement('div');
     img.style.position = 'absolute';
     img.style.zIndex = 3;
@@ -54,26 +54,26 @@ function blink(elementId, fireflies, pixelsFromTop, pixelsFromLeft) {
     img.style.top = pixelsFromTop + 'px';
     img.style.left = pixelsFromLeft + 'px';
 
-    const size = vary(fireflies.sizeVariation, fireflies.averageSizeInPixels) + 'px';
+    const size = vary(fireflySettings.sizeVariation, fireflySettings.averageSizeInPixels) + 'px';
     img.style.height = size;
     img.style.width = size;
     img.style.borderRadius = '500px';
 
-    img.style.animationDuration = vary(fireflies.onTimeVariation, fireflies.averageOnSeconds) + 's';
+    img.style.animationDuration = vary(fireflySettings.onTimeVariation, fireflySettings.averageOnSeconds) + 's';
     img.style.animationIterationCount = '1';
     document.getElementById(elementId).appendChild(img);
     window.setTimeout(() => img.remove(), 5000);
 }
 
-function addFireflyGroup(elementId, fireflies, fireflyGroup, scale) {
+function addFireflyGroup(elementId, fireflySettings, fireflyGroup, scale) {
     for (let i = 0; i < fireflyGroup.fireflyCount; i++) {
         const interval = window.setInterval(
             () => {
                 const top = vary(fireflyGroup.positionVariation.y, scale * fireflyGroup.pixelsFromTop);
                 const left = vary(fireflyGroup.positionVariation.x, scale * fireflyGroup.pixelsFromLeft);
-                blink(elementId, fireflies, top, left)
+                blink(elementId, fireflySettings, top, left)
             },
-            vary(fireflies.offTimeVariation, fireflies.averageOffSeconds) * 1000
+            vary(fireflySettings.offTimeVariation, fireflySettings.averageOffSeconds) * 1000
         );
         window.addEventListener('resize', () => window.clearInterval(interval));
     }
@@ -83,7 +83,7 @@ function addSmallFireflyGroups(elementId, background, scale) {
     for (let i = 0; i < background.fireflyGroups.length; i++) {
         addFireflyGroup(
             elementId,
-            background.fireflies,
+            background.fireflySettings,
             background.fireflyGroups[i],
             scale
         );
