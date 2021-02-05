@@ -55,7 +55,6 @@
 <script src="helpers.js"></script>
 <script src="backgrounds/backgrounds.js"></script>
 <script src="chest/chest.js"></script>
-<script src="fireflies.js"></script>
 <script>
     const BACKGROUND = BACKGROUNDS.random();
 
@@ -65,7 +64,7 @@
         const scale = calculateScaling(BACKGROUND);
         addBackground("container", BACKGROUND, scale);
         addChest("container", BACKGROUND, CHEST, scale);
-        addFireflies("container", FIREFLIES, BACKGROUND, CHEST, scale);
+        addFireflies("container", BACKGROUND, scale);
     }
     window.addEventListener('resize', draw);
     draw();

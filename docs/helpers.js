@@ -78,37 +78,37 @@ function addSmallFireflyGroup(elementId, fireflies, pixelsFromTop, pixelsFromLef
     }
 }
 
-function addSmallFireflyGroups(elementId, fireflies, background, scale) {
+function addSmallFireflyGroups(elementId, background, scale) {
     for (let i = 0; i < background.fireflyGroups.length; i++) {
         addSmallFireflyGroup(
             elementId,
-            fireflies,
+            background.fireflies,
             scale * background.fireflyGroups[i].pixelsFromTop,
             scale * background.fireflyGroups[i].pixelsFromLeft
         );
     }
 }
 
-function addLargeFireflyGroup(elementId, fireflies, background, chest, scale) {
-    for (let i = 0; i < fireflies.largeGroup.fireflyCount; i++) {
+function addLargeFireflyGroup(elementId, background, scale) {
+    for (let i = 0; i < background.fireflies.largeGroup.fireflyCount; i++) {
         const interval = window.setInterval(() => {
             const top = vary(
-                fireflies.largeGroup.positionVariation.y,
+                background.fireflies.largeGroup.positionVariation.y,
                 scale * (background.chest.pixelsFromTop - (background.chest.heightInPixels * 1.5))
             );
             const left = vary(
-                fireflies.largeGroup.positionVariation.x,
+                background.fireflies.largeGroup.positionVariation.x,
                 scale * (background.chest.pixelsFromLeft + (background.chest.widthInPixels / 2)
                 ));
-            blink(elementId, fireflies, top, left)
+            blink(elementId, background.fireflies, top, left)
         },
-            vary(fireflies.offTimeVariation, fireflies.averageOffSeconds) * 1000
+            vary(background.fireflies.offTimeVariation, background.fireflies.averageOffSeconds) * 1000
         );
         window.addEventListener('resize', () => window.clearInterval(interval));
     }
 }
 
-function addFireflies(elementId, fireflies, background, chest, scale) {
-    addSmallFireflyGroups(elementId, fireflies, background, scale);
-    addLargeFireflyGroup(elementId, fireflies, background, chest, scale);
+function addFireflies(elementId, background, scale) {
+    addSmallFireflyGroups(elementId, background, scale);
+    addLargeFireflyGroup(elementId, background, scale);
 }
