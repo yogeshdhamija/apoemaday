@@ -28,10 +28,10 @@ function addChest(elementId, background, chest, scale) {
     const img = document.createElement('img');
     img.src = chest.linkToImage;
     img.style.position = 'absolute';
-    img.style.left = (scale * background.bottomLeftCornerPositionOfChest.pixelsFromLeft) + 'px';
-    img.style.top = (scale * (background.bottomLeftCornerPositionOfChest.pixelsFromTop - chest.heightInPixels)) + 'px';
-    img.style.width = (scale * (chest.widthInPixels)) + 'px';
-    img.style.height = (scale * (chest.heightInPixels)) + 'px';
+    img.style.left = (scale * background.chest.pixelsFromLeft) + 'px';
+    img.style.top = (scale * (background.chest.pixelsFromTop - background.chest.heightInPixels)) + 'px';
+    img.style.width = (scale * (background.chest.widthInPixels)) + 'px';
+    img.style.height = (scale * (background.chest.heightInPixels)) + 'px';
     img.style.zIndex = 2;
     document.getElementById(elementId).appendChild(img);
 }
@@ -94,11 +94,11 @@ function addLargeFireflyGroup(elementId, fireflies, background, chest, scale) {
         const interval = window.setInterval(() => {
             const top = vary(
                 fireflies.largeGroup.positionVariation.y,
-                scale * (background.bottomLeftCornerPositionOfChest.pixelsFromTop - (chest.heightInPixels * 1.5))
+                scale * (background.chest.pixelsFromTop - (background.chest.heightInPixels * 1.5))
             );
             const left = vary(
                 fireflies.largeGroup.positionVariation.x,
-                scale * (background.bottomLeftCornerPositionOfChest.pixelsFromLeft + (chest.widthInPixels / 2)
+                scale * (background.chest.pixelsFromLeft + (background.chest.widthInPixels / 2)
                 ));
             blink(elementId, fireflies, top, left)
         },

@@ -4,9 +4,11 @@ const BACKGROUNDS = [
         linkToImage: "backgrounds/creek.jpg",
         widthInPixels: 1920,
         heightInPixels: 1280,
-        bottomLeftCornerPositionOfChest: {
+        chest: {
             pixelsFromTop: 765,
-            pixelsFromLeft: 200
+            pixelsFromLeft: 200,
+            widthInPixels: 200,
+            heightInPixels: 150,
         },
         fireflyGroups: [
             {
