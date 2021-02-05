@@ -16,40 +16,29 @@
 
     @keyframes left {
         0% {}
-        50% { margin-left:-10px; }
+        20% { margin-left:-10px; }
         100% { margin-left:-15px; }
     }
     @keyframes right {
         0% {}
-        50% { margin-left:10px; }
+        70% { margin-left:10px; }
         100% { margin-left:15px; }
     }
     @keyframes up {
         0% {}
-        50% { margin-top:-10px; }
+        20% { margin-top:-10px; }
         100% { margin-top: -15px; }
     }
     @keyframes down {
         0% {}
-        50% { margin-top:10px; }
+        70% { margin-top:10px; }
         100% { margin-top:15px; }
     }
 
     @keyframes firefly {
-        0% {
-            background-color: black;
-            opacity: 1;
-        }
-
-        50% {
-            background-color: yellow;
-            opacity: 1;
-        }
-
-        100% {
-            background-color: black;
-            opacity: 0;
-        }
+        0% { opacity: 0; }
+        20% { opacity: 0.8; }
+        100% { opacity: 0; }
     }
 </style>
 <script src="helpers.js"></script>

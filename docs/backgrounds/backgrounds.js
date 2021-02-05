@@ -5,8 +5,11 @@ const DEFAULT_FIREFLY_SETTINGS = {
     averageOnSeconds: 2,
     onTimeVariation: 0.6,
 
-    averageSizeInPixels: 5,
-    sizeVariation: 3,
+    averageSizeInPixels: 2.3,
+    sizeVariation: 2,
+
+    averageBlurSizeInPixels: 1,
+    blurSizeVariation: 1,
 }
 
 const BACKGROUNDS = [
@@ -24,16 +27,25 @@ const BACKGROUNDS = [
         },
         fireflyGroups: [
             {
-                fireflyCount: 70,
-                pixelsFromTop: (765 - (1.5 * 150)),
+                fireflyCount: 120,
+                pixelsFromTop: (765 - 150),
                 pixelsFromLeft: (200 + (200 / 2)),
                 positionVariation: {
-                    y: 120,
+                    y: 70,
                     x: 80
                 }
             },
             {
                 fireflyCount: 20,
+                pixelsFromTop:1280/2,
+                pixelsFromLeft:1920/2,
+                positionVariation: {
+                    y: 1280/2,
+                    x: 1920/2
+                }
+            },
+            {
+                fireflyCount: 70,
                 pixelsFromTop:400,
                 pixelsFromLeft:900,
                 positionVariation: {
@@ -42,8 +54,8 @@ const BACKGROUNDS = [
                 }
             },
             {
-                fireflyCount: 20,
-                pixelsFromTop:1000,
+                fireflyCount: 70,
+                pixelsFromTop:800,
                 pixelsFromLeft:1600,
                 positionVariation: {
                     y: 60,
