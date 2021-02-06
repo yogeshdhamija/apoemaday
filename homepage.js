@@ -99,15 +99,13 @@ function addFireflyGroup(elementId, fireflySettings, fireflyGroup, scale) {
             () => window.clearInterval(interval),
             vary(fireflySettings.offTimeVariation/2, fireflySettings.averageOffSeconds/2) * 1000
         );
-        window.addEventListener('resize', () => window.clearInterval(interval));
     }
 
     for (let i = 0; i < fireflyGroup.fireflyCount; i++) {
-        const interval = window.setInterval(
+        window.setInterval(
             () => blinkNearby(elementId, fireflySettings, fireflyGroup, scale),
             vary(fireflySettings.offTimeVariation, fireflySettings.averageOffSeconds) * 1000
         );
-        window.addEventListener('resize', () => window.clearInterval(interval));
     }
 }
 
