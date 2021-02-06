@@ -16,18 +16,12 @@
 <script src="chest/chest.js"></script>
 <script>
     const BACKGROUND = BACKGROUNDS.random();
-
-    function draw() {
-        document.getElementById("container").innerHTML = "";
-        clearAllTimeouts();
-
+    doInPage(() => {
         const scale = calculateScaling(BACKGROUND);
         addBackground("container", BACKGROUND, scale);
         addChest("container", BACKGROUND, CHEST, scale);
         addFireflies("container", BACKGROUND, scale);
-    }
-    window.addEventListener('resize', draw);
-    draw();
+    });
 </script>
 
 </html>

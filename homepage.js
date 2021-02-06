@@ -1,7 +1,3 @@
-Array.prototype.random = function () {
-    return this[Math.floor((Math.random() * this.length))];
-}
-
 function calculateScaling(background) {
     const heightScalingFactor = window.innerHeight / background.heightInPixels;
     if ((heightScalingFactor * background.widthInPixels) > window.innerWidth) {
