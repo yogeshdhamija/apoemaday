@@ -1,13 +1,3 @@
-function calculateScaling(background) {
-    const heightScalingFactor = window.innerHeight / background.heightInPixels;
-    if ((heightScalingFactor * background.widthInPixels) > window.innerWidth) {
-        return heightScalingFactor;
-    } else {
-        const widthScalingFactor = window.innerWidth / background.widthInPixels;
-        return widthScalingFactor;
-    }
-}
-
 function addBackground(elementId, background, scale) {
     const img = document.createElement('img');
     img.src = 'backgrounds/' + background.linkToImage;

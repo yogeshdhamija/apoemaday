@@ -8,20 +8,22 @@
 </head>
 
 <body>
-    <div id="container"></div>
+    <div id="homepage-container"></div>
+
+    <script src="helpers.js"></script>
+    <script src="homepage.js"></script>
+    <script src="backgrounds/backgrounds.js"></script>
+    <script src="chest/chest.js"></script>
+    <script>
+        const BACKGROUND = BACKGROUNDS.random();
+        doInPage("homepage-container", () => {
+            const scale = calculateScaling(BACKGROUND);
+            addBackground("homepage-container", BACKGROUND, scale);
+            addChest("homepage-container", BACKGROUND, CHEST, scale);
+            addFireflies("homepage-container", BACKGROUND, scale);
+        });
+    </script>
 </body>
-<script src="helpers.js"></script>
-<script src="homepage.js"></script>
-<script src="backgrounds/backgrounds.js"></script>
-<script src="chest/chest.js"></script>
-<script>
-    const BACKGROUND = BACKGROUNDS.random();
-    doInPage(() => {
-        const scale = calculateScaling(BACKGROUND);
-        addBackground("container", BACKGROUND, scale);
-        addChest("container", BACKGROUND, CHEST, scale);
-        addFireflies("container", BACKGROUND, scale);
-    });
-</script>
+
 
 </html>

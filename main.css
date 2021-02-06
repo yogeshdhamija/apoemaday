@@ -1,9 +1,23 @@
 body {
+    margin:0;
+    border:0;
+    padding:0;
     background-color: black;
 }
-#container { 
-    transition: opacity 2s;
+#poems-container { 
     opacity: 0;
+    transition: opacity 2s;
+    display:block;
+    position:absolute;
+    height:100%;
+    width:100%;
+    overflow:hidden;
+}
+#homepage-container { 
+    opacity: 0;
+    display:block;
+    position:absolute;
+    transition: opacity 2s;
 }
 
 @keyframes left {

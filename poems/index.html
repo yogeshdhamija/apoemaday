@@ -8,16 +8,19 @@
 </head>
 
 <body>
-    <div id="container"></div>
-</body>
-<script src="../helpers.js"></script>
-<script src="poems.js"></script>
-<script src="../backgrounds/backgrounds.js"></script>
-<script src="../chest/chest.js"></script>
-<script>
-    doInPage(() => {
+    <div id="poems-container"></div>
 
-    });
-</script>
+    <script src="../helpers.js"></script>
+    <script src="poems.js"></script>
+    <script src="../backgrounds/backgrounds.js"></script>
+    <script src="../chest/chest.js"></script>
+    <script>
+        doInPage("poems-container", () => {
+            const scalingFactor = calculateScaling(CHEST.open);
+            addBackground('poems-container', CHEST, scalingFactor);
+        });
+    </script>
+</body>
+
 
 </html>

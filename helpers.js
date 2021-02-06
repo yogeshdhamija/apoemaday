@@ -10,11 +10,21 @@ function clearAllTimeouts() {
   }
 }
 
-function doInPage(actions){
+function doInPage(containerElementId, actions){
   window.addEventListener('resize', () => {
-    document.getElementById("container").innerHTML = "";
+    document.getElementById(containerElementId).innerHTML = "";
     clearAllTimeouts();
     actions();
   });
   actions();
+}
+
+function calculateScaling(background) {
+    const heightScalingFactor = window.innerHeight / background.heightInPixels;
+    if ((heightScalingFactor * background.widthInPixels) > window.innerWidth) {
+        return heightScalingFactor;
+    } else {
+        const widthScalingFactor = window.innerWidth / background.widthInPixels;
+        return widthScalingFactor;
+    }
 }
