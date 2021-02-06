@@ -40,8 +40,8 @@ const BACKGROUNDS = [
                 pixelsFromTop:1280/2,
                 pixelsFromLeft:1920/2,
                 positionVariation: {
-                    y: 1280/2,
-                    x: 1920/2
+                    y: (1280/2) - 50,
+                    x: (1920/2) - 50
                 }
             },
             {
