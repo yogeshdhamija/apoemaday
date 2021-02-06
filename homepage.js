@@ -40,6 +40,7 @@ function addChest(elementId, background, chest, scale) {
     container.appendChild(img);
     img.onclick = function () {
         container.style.opacity = 0;
+        window.setTimeout(() => window.location.href="poems", 1000);
     }
 }
 
