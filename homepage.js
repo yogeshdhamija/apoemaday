@@ -14,7 +14,7 @@ function calculateScaling(background) {
 
 function addBackground(elementId, background, scale) {
     const img = document.createElement('img');
-    img.src = background.linkToImage;
+    img.src = 'backgrounds/' + background.linkToImage;
     img.style.position = 'absolute';
     img.style.top = '0px';
     img.style.left = '0px';
@@ -28,7 +28,7 @@ function addBackground(elementId, background, scale) {
 
 function addChest(elementId, background, chest, scale) {
     const img = document.createElement('img');
-    img.src = chest.linkToImage;
+    img.src = 'chest/' + chest.closed.linkToImage;
     img.style.position = 'absolute';
     img.style.left = (scale * background.chest.pixelsFromLeft) + 'px';
     img.style.top = (scale * (background.chest.pixelsFromTop - background.chest.heightInPixels)) + 'px';

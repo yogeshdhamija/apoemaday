@@ -15,7 +15,7 @@ const DEFAULT_FIREFLY_SETTINGS = {
 const BACKGROUNDS = [
     {
         name: "creek",
-        linkToImage: "backgrounds/creek.jpg",
+        linkToImage: "creek.jpg",
         fireflySettings: DEFAULT_FIREFLY_SETTINGS,
         widthInPixels: 1920,
         heightInPixels: 1280,

@@ -3,28 +3,19 @@
 
 <head>
     <title>A Poem A Day</title>
-    <link rel="icon" href="favicon.ico" type="image/x-icon" />
-    <link rel="stylesheet" href="main.css" />
+    <link rel="icon" href="../favicon.ico" type="image/x-icon" />
+    <link rel="stylesheet" href="../main.css" />
 </head>
 
 <body>
     <div id="container"></div>
 </body>
-<script src="helpers.js"></script>
-<script src="homepage.js"></script>
-<script src="backgrounds/backgrounds.js"></script>
-<script src="chest/chest.js"></script>
+<script src="../helpers.js"></script>
+<script src="poems.js"></script>
+<script src="../backgrounds/backgrounds.js"></script>
+<script src="../chest/chest.js"></script>
 <script>
-    const BACKGROUND = BACKGROUNDS.random();
-
     function draw() {
-        document.getElementById("container").innerHTML = "";
-        clearAllTimeouts();
-
-        const scale = calculateScaling(BACKGROUND);
-        addBackground("container", BACKGROUND, scale);
-        addChest("container", BACKGROUND, CHEST, scale);
-        addFireflies("container", BACKGROUND, scale);
     }
     window.addEventListener('resize', draw);
     draw();

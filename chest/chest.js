@@ -1,3 +1,8 @@
 const CHEST = {
-    linkToImage: "chest/chest.png",
+    closed: {
+        linkToImage: "chest.png",
+    },
+    open: {
+
+    }
 }
