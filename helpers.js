@@ -33,7 +33,11 @@ function addChest(elementId, background, chest, scale) {
     img.style.width = (scale * (background.chest.widthInPixels)) + 'px';
     img.style.height = (scale * (background.chest.heightInPixels)) + 'px';
     img.style.zIndex = 2;
+    img.style.cursor = 'zoom-in';
     document.getElementById(elementId).appendChild(img);
+    img.onclick = function() {
+        alert('hi');
+    }
 }
 
 function randomBetween(smaller, larger) {
