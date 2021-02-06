@@ -21,7 +21,9 @@ function addBackground(elementId, background, scale) {
     img.style.width = (scale * background.widthInPixels) + 'px';
     img.style.height = (scale * background.heightInPixels) + 'px';
     img.style.zIndex = 1;
-    document.getElementById(elementId).appendChild(img);
+    const container = document.getElementById(elementId);
+    container.appendChild(img);
+    container.style.opacity = 1;
 }
 
 function addChest(elementId, background, chest, scale) {
@@ -34,9 +36,10 @@ function addChest(elementId, background, chest, scale) {
     img.style.height = (scale * (background.chest.heightInPixels)) + 'px';
     img.style.zIndex = 2;
     img.style.cursor = 'zoom-in';
-    document.getElementById(elementId).appendChild(img);
-    img.onclick = function() {
-        alert('hi');
+    const container = document.getElementById(elementId);
+    container.appendChild(img);
+    img.onclick = function () {
+        container.style.opacity = 0;
     }
 }
 
@@ -76,14 +79,31 @@ function blink(elementId, fireflySettings, pixelsFromTop, pixelsFromLeft) {
     );
 }
 
+function blinkNearby(elementId, fireflySettings, fireflyGroup, scale) {
+    const top = vary(fireflyGroup.positionVariation.y, scale * fireflyGroup.pixelsFromTop);
+    const left = vary(fireflyGroup.positionVariation.x, scale * fireflyGroup.pixelsFromLeft);
+    blink(elementId, fireflySettings, top, left)
+}
+
 function addFireflyGroup(elementId, fireflySettings, fireflyGroup, scale) {
+    const averageFirefliesOn = fireflyGroup.fireflyCount * (fireflySettings.averageOnSeconds / (fireflySettings.averageOffSeconds + fireflySettings.averageOnSeconds));
+
+    for (let i = 0; i < averageFirefliesOn; i++) {
+        blinkNearby(elementId, fireflySettings, fireflyGroup, scale);
+        const interval = window.setInterval(
+            () => blinkNearby(elementId, fireflySettings, fireflyGroup, scale),
+            vary(fireflySettings.onTimeVariation/2, fireflySettings.averageOnSeconds/2) * 1000
+        );
+        window.setTimeout(
+            () => window.clearInterval(interval),
+            vary(fireflySettings.offTimeVariation/2, fireflySettings.averageOffSeconds/2) * 1000
+        );
+        window.addEventListener('resize', () => window.clearInterval(interval));
+    }
+
     for (let i = 0; i < fireflyGroup.fireflyCount; i++) {
         const interval = window.setInterval(
-            () => {
-                const top = vary(fireflyGroup.positionVariation.y, scale * fireflyGroup.pixelsFromTop);
-                const left = vary(fireflyGroup.positionVariation.x, scale * fireflyGroup.pixelsFromLeft);
-                blink(elementId, fireflySettings, top, left)
-            },
+            () => blinkNearby(elementId, fireflySettings, fireflyGroup, scale),
             vary(fireflySettings.offTimeVariation, fireflySettings.averageOffSeconds) * 1000
         );
         window.addEventListener('resize', () => window.clearInterval(interval));
