@@ -53,6 +53,22 @@ function addPoem(poem, container, scroll, scale, num){
     title.style.whiteSpace = 'nowrap';
     title.style.fontFamily = 'charmonman';
     
+    const date = document.createElement('div');
+    date.textContent = poem.date;
+    date.style.transformOrigin = 'bottom right';
+    date.style.transform = 'rotate(-90deg)';
+    date.style.color = 'maroon';
+    date.style.zIndex = 4;
+    date.style.display = 'block';
+    date.style.position = 'absolute';
+    date.style.top = '120px';
+    date.style.left = ((scale.x * scroll.closed.imageEndsFromLeftInPixels) - 30) + 'px';
+    date.style.width = '0px';
+    date.style.height = '0px';
+    date.style.fontSize = '20px';
+    date.style.whiteSpace = 'nowrap';
+    date.style.fontFamily = 'charmonman';
+    
     const link = document.createElement('div');
     link.style.zIndex = 5;
     link.style.display = 'block';
@@ -64,6 +80,7 @@ function addPoem(poem, container, scroll, scale, num){
     link.style.cursor = 'pointer';
     
     div.appendChild(title);
+    div.appendChild(date);
     div.appendChild(link);
     container.appendChild(div);
 }
