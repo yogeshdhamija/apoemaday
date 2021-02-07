@@ -8,7 +8,7 @@
 </head>
 
 <body>
-    <div id="homepage-container"></div>
+    <div id="container"></div>
 
     <script src="helpers.js"></script>
     <script src="homepage.js"></script>
@@ -16,11 +16,11 @@
     <script src="chest/chest.js"></script>
     <script>
         const BACKGROUND = BACKGROUNDS.random();
-        doInPage("homepage-container", () => {
+        doInPage("container", () => {
             const scale = calculateScaling(BACKGROUND);
-            addBackground("homepage-container", BACKGROUND, scale);
-            addChest("homepage-container", BACKGROUND, CHEST, scale);
-            addFireflies("homepage-container", BACKGROUND, scale);
+            addBackground("container", BACKGROUND, scale);
+            addChest("container", BACKGROUND, CHEST, scale);
+            addFireflies("container", BACKGROUND, scale);
         });
     </script>
 </body>
