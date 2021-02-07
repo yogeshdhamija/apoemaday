@@ -25,22 +25,34 @@ function createPoemContainer(chest, poems, scale){
 }
 
 function addPoem(poem, container, scroll, scale, num){
-    const img = document.createElement('img');
-    img.src = '../scroll/' + scroll.closed.linkToImage;
-    img.style.display = 'block';
-    img.style.position = 'absolute';
-    img.style.width = '17%';
-    img.style.maxHeight = '100%';
-    img.style.minHeight = '75%';
-    img.style.marginTop = 'auto';
-    img.style.marginBottom = 'auto';
-    img.style.zIndex = 3;
-    img.style.left = (num * 17) + '%';
-    img.style.bottom = '0px';
-
     const div = document.createElement('div');
-
-    div.appendChild(img);
+    div.style.display = 'block';
+    div.style.position = 'absolute';
+    div.style.width = '17%';
+    div.style.maxHeight = '100%';
+    div.style.minHeight = '75%';
+    div.style.marginTop = 'auto';
+    div.style.marginBottom = 'auto';
+    div.style.zIndex = 3;
+    div.style.left = (num * 17) + '%';
+    div.style.bottom = '0px';
+    div.style.backgroundImage = 'url(../scroll/' + scroll.closed.linkToImage + ')';
+    div.style.backgroundSize = '100% 100%';
+    
+    const title = document.createElement('div');
+    title.textContent = poem.title;
+    title.style.transformOrigin = 'top left';
+    title.style.transform = 'rotate(-90deg)';
+    title.style.color = 'maroon';
+    title.style.zIndex = 4;
+    title.style.display = 'block';
+    title.style.position = 'absolute';
+    title.style.bottom = '0px';
+    title.style.left = '10%';
+    title.style.fontSize = '30px';
+    title.style.whiteSpace = 'nowrap';
+    
+    div.appendChild(title);
     container.appendChild(div);
 }
 
@@ -48,11 +60,6 @@ function addPoems(containerElementId, chest, poems, scroll, scale){
     const container = createPoemContainer(chest, poems, scale);
 
     poems.slice(-6).forEach((poem, i) => {
-        addPoem(poem, container, scroll, scale, i);
-        addPoem(poem, container, scroll, scale, i);
-        addPoem(poem, container, scroll, scale, i);
-        addPoem(poem, container, scroll, scale, i);
-        addPoem(poem, container, scroll, scale, i);
         addPoem(poem, container, scroll, scale, i);
     });
 
