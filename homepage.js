@@ -31,5 +31,5 @@ function addChest(elementId, background, chest, scale) {
 }
 
 function addFireflies(elementId, background, scale) {
-    addFireflyGroups(elementId, background, scale);
+    addFireflyGroups(elementId, background, scale.combined, scale.combined);
 }

@@ -3,30 +3,32 @@ Array.prototype.random = function () {
 }
 
 function clearAllTimeouts() {
-  for (var i = setTimeout(function() {}, 0); i > 0; i--) {
-    window.clearInterval(i);
-    window.clearTimeout(i);
-    if (window.cancelAnimationFrame) window.cancelAnimationFrame(i);
-  }
+    for (var i = setTimeout(function () { }, 0); i > 0; i--) {
+        window.clearInterval(i);
+        window.clearTimeout(i);
+        if (window.cancelAnimationFrame) window.cancelAnimationFrame(i);
+    }
 }
 
-function doInPage(containerElementId, actions){
-  window.addEventListener('resize', () => {
-    document.getElementById(containerElementId).innerHTML = "";
-    clearAllTimeouts();
+function doInPage(containerElementId, actions) {
+    window.addEventListener('resize', () => {
+        document.getElementById(containerElementId).innerHTML = "";
+        clearAllTimeouts();
+        actions();
+    });
     actions();
-  });
-  actions();
 }
 
 function calculateScaling(background) {
-    const heightScalingFactor = window.innerHeight / background.heightInPixels;
-    if ((heightScalingFactor * background.widthInPixels) > window.innerWidth) {
-        return heightScalingFactor;
+    const y = window.innerHeight / background.heightInPixels;
+    const x = window.innerWidth / background.widthInPixels;
+    let combined;
+    if ((y * background.widthInPixels) > window.innerWidth) {
+        combined = y;
     } else {
-        const widthScalingFactor = window.innerWidth / background.widthInPixels;
-        return widthScalingFactor;
+        combined = x;
     }
+    return { y, x, combined }
 }
 
 function randomBetween(smaller, larger) {
@@ -65,42 +67,43 @@ function blink(elementId, fireflySettings, pixelsFromTop, pixelsFromLeft) {
     );
 }
 
-function blinkNearby(elementId, fireflySettings, fireflyGroup, scale) {
-    const top = vary(fireflyGroup.positionVariation.y, scale * fireflyGroup.pixelsFromTop);
-    const left = vary(fireflyGroup.positionVariation.x, scale * fireflyGroup.pixelsFromLeft);
+function blinkNearby(elementId, fireflySettings, fireflyGroup, scaleX, scaleY) {
+    const top = vary(fireflyGroup.positionVariation.y, scaleY * fireflyGroup.pixelsFromTop);
+    const left = vary(fireflyGroup.positionVariation.x, scaleX * fireflyGroup.pixelsFromLeft);
     blink(elementId, fireflySettings, top, left)
 }
 
-function addFireflyGroup(elementId, fireflySettings, fireflyGroup, scale) {
+function addFireflyGroup(elementId, fireflySettings, fireflyGroup, scaleX, scaleY) {
     const averageFirefliesOn = fireflyGroup.fireflyCount * (fireflySettings.averageOnSeconds / (fireflySettings.averageOffSeconds + fireflySettings.averageOnSeconds));
 
     for (let i = 0; i < averageFirefliesOn; i++) {
-        blinkNearby(elementId, fireflySettings, fireflyGroup, scale);
+        blinkNearby(elementId, fireflySettings, fireflyGroup, scaleX, scaleY);
         const interval = window.setInterval(
-            () => blinkNearby(elementId, fireflySettings, fireflyGroup, scale),
-            vary(fireflySettings.onTimeVariation/2, fireflySettings.averageOnSeconds/2) * 1000
+            () => blinkNearby(elementId, fireflySettings, fireflyGroup, scaleX, scaleY),
+            vary(fireflySettings.onTimeVariation / 2, fireflySettings.averageOnSeconds / 2) * 1000
         );
         window.setTimeout(
             () => window.clearInterval(interval),
-            vary(fireflySettings.offTimeVariation/2, fireflySettings.averageOffSeconds/2) * 1000
+            vary(fireflySettings.offTimeVariation / 2, fireflySettings.averageOffSeconds / 2) * 1000
         );
     }
 
     for (let i = 0; i < fireflyGroup.fireflyCount; i++) {
         window.setInterval(
-            () => blinkNearby(elementId, fireflySettings, fireflyGroup, scale),
+            () => blinkNearby(elementId, fireflySettings, fireflyGroup, scaleX, scaleY),
             vary(fireflySettings.offTimeVariation, fireflySettings.averageOffSeconds) * 1000
         );
     }
 }
 
-function addFireflyGroups(elementId, background, scale) {
+function addFireflyGroups(elementId, background, scaleX, scaleY) {
     for (let i = 0; i < background.fireflyGroups.length; i++) {
         addFireflyGroup(
             elementId,
             background.fireflySettings,
             background.fireflyGroups[i],
-            scale
+            scaleX,
+            scaleY
         );
     }
 }

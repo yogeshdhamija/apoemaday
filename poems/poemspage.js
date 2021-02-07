@@ -4,8 +4,8 @@ function addBackground(containerElementId, chest, scale){
     img.style.position = 'absolute';
     img.style.top = '0px';
     img.style.left = '0px';
-    img.style.width = (scale * chest.open.widthInPixels) + 'px';
-    img.style.height = (scale * chest.open.heightInPixels) + 'px';
+    img.style.width = (scale.x * chest.open.widthInPixels) + 'px';
+    img.style.height = (scale.y * chest.open.heightInPixels) + 'px';
     img.style.zIndex = 1;
     const container = document.getElementById(containerElementId);
     container.appendChild(img);
@@ -16,12 +16,12 @@ function createPoemContainer(chest, poems, scale){
     const div = document.createElement('div');
     div.innerText = poems;
     div.style.zIndex = 2;
-    div.style.height = (scale * chest.open.bottomSurface.heightInPixels) + 'px';
-    div.style.width = (scale * chest.open.bottomSurface.widthInPixels) + 'px';
+    div.style.height = (scale.y * chest.open.bottomSurface.heightInPixels) + 'px';
+    div.style.width = (scale.x * chest.open.bottomSurface.widthInPixels) + 'px';
     div.style.position = 'absolute';
     div.style.display = 'block';
-    div.style.top = (scale * chest.open.bottomSurface.pixelsFromTop) + 'px';
-    div.style.left = (scale * chest.open.bottomSurface.pixelsFromLeft) + 'px';
+    div.style.top = (scale.y * chest.open.bottomSurface.pixelsFromTop) + 'px';
+    div.style.left = (scale.x * chest.open.bottomSurface.pixelsFromLeft) + 'px';
     return div;
 }
 
@@ -32,5 +32,5 @@ function addPoems(containerElementId, chest, poems, scale){
 }
 
 function addFireflies(containerElementId, chest, scale){
-    addFireflyGroups(containerElementId, chest.open, scale);
+    addFireflyGroups(containerElementId, chest.open, scale.x, scale.y);
 }

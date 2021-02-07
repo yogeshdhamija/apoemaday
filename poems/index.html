@@ -18,10 +18,10 @@
     <script src="../chest/chest.js"></script>
     <script>
         doInPage("container", () => {
-            const scalingFactor = calculateScaling(CHEST.open);
-            addBackground('container', CHEST, scalingFactor);
-            addPoems('container', CHEST, POEMS, scalingFactor);
-            addFireflies('container', CHEST, scalingFactor);
+            const scale = calculateScaling(CHEST.open);
+            addBackground('container', CHEST, scale);
+            addPoems('container', CHEST, POEMS, scale);
+            addFireflies('container', CHEST, scale);
         });
     </script>
 </body>

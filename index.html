@@ -19,8 +19,8 @@
         const BACKGROUND = BACKGROUNDS.random();
         doInPage("container", () => {
             const scale = calculateScaling(BACKGROUND);
-            addBackground("container", BACKGROUND, scale);
-            addChest("container", BACKGROUND, CHEST, scale);
+            addBackground("container", BACKGROUND, scale.combined);
+            addChest("container", BACKGROUND, CHEST, scale.combined);
             addFireflies("container", BACKGROUND, scale);
         });
     </script>
