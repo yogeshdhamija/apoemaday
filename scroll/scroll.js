@@ -8,5 +8,8 @@ const SCROLL = {
     },
     open: {
         linkToImage: "open.png"
+    },
+    stacked: {
+        linkToImage: "stacked.png"
     }
 }
