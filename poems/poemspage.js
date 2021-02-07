@@ -60,22 +60,26 @@ function addDate(container, poem, scroll, scale){
     container.appendChild(date);
 }
 
-function addLink(container, poem, scroll, scale, bodyId){
-    const link = document.createElement('div');
-    link.style.zIndex = 5;
-    link.style.display = 'block';
-    link.style.position = 'absolute';
-    link.style.height = '100%';
-    link.style.width = (scale.x * (scroll.closed.imageEndsFromLeftInPixels - scroll.closed.imageBeginsFromLeftInPixels)) + 'px';
-    link.style.left = (scale.x * scroll.closed.imageBeginsFromLeftInPixels) + 'px';
-    link.style.cursor = 'pointer';
-
-    link.onclick = function () {
+function link(element, bodyId, link) {
+    element.onclick = function () {
         document.getElementById(bodyId).style.opacity = 0;
-        window.setTimeout(() => window.location.href=poem.linkToFile, 1000);
-    }
+        window.setTimeout(() => window.location.href = link, 1000);
+    };
+}
 
-    container.appendChild(link);
+function addLink(container, poem, scroll, scale, bodyId){
+    const element = document.createElement('div');
+    element.style.zIndex = 5;
+    element.style.display = 'block';
+    element.style.position = 'absolute';
+    element.style.height = '100%';
+    element.style.width = (scale.x * (scroll.closed.imageEndsFromLeftInPixels - scroll.closed.imageBeginsFromLeftInPixels)) + 'px';
+    element.style.left = (scale.x * scroll.closed.imageBeginsFromLeftInPixels) + 'px';
+    element.style.cursor = 'pointer';
+
+    link(element, bodyId, poem.linkToFile);
+
+    container.appendChild(element);
 }
 
 function addRolledPoem(poem, container, scroll, scale, bodyId) {
@@ -109,6 +113,21 @@ function addFlower(container, scroll){
     container.appendChild(img);
 }
 
+function addStackedPoems(poems, container, scroll, scale, bodyId){
+    const div = document.createElement('div');
+    div.style.display = 'block';
+    div.style.position = 'absolute';
+    div.style.width = '50%';
+    div.style.maxHeight = '100%';
+    div.style.minHeight = '60%';
+    div.style.zIndex = 3;
+    div.style.left = '50%';
+    div.style.bottom = '0px';
+    div.style.backgroundImage = 'url(../scroll/' + scroll.stacked.linkToImage + ')';
+    div.style.backgroundSize = '100% 100%';
+    container.appendChild(div);
+}
+
 function addPoems(containerElementId, chest, poems, scroll, scale) {
     const container = createPoemContainer(chest, poems, scale);
 
@@ -118,6 +137,8 @@ function addPoems(containerElementId, chest, poems, scroll, scale) {
         addFlower(container, scroll);
     }
 
+    addStackedPoems(poems, container, scroll, scale, containerElementId);
+    
     document.getElementById(containerElementId).appendChild(container);
 }
 
