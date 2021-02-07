@@ -1,4 +1,4 @@
-function addBackground(containerElementId, chest, scale){
+function addBackground(containerElementId, chest, scale) {
     const img = document.createElement('img');
     img.src = '../chest/' + chest.open.linkToImage;
     img.style.position = 'absolute';
@@ -12,7 +12,7 @@ function addBackground(containerElementId, chest, scale){
     container.style.opacity = 1;
 }
 
-function createPoemContainer(chest, poems, scale){
+function createPoemContainer(chest, poems, scale) {
     const div = document.createElement('div');
     div.style.zIndex = 2;
     div.style.height = (scale.y * chest.open.bottomSurface.heightInPixels) + 'px';
@@ -24,21 +24,7 @@ function createPoemContainer(chest, poems, scale){
     return div;
 }
 
-function addPoem(poem, container, scroll, scale, num){
-    const div = document.createElement('div');
-    div.style.display = 'block';
-    div.style.position = 'absolute';
-    div.style.width = '17%';
-    div.style.maxHeight = '100%';
-    div.style.minHeight = '75%';
-    div.style.marginTop = 'auto';
-    div.style.marginBottom = 'auto';
-    div.style.zIndex = 3;
-    div.style.left = (num * 17) + '%';
-    div.style.bottom = '0px';
-    div.style.backgroundImage = 'url(../scroll/' + scroll.closed.linkToImage + ')';
-    div.style.backgroundSize = '100% 100%';
-    
+function addTitle(container, poem){
     const title = document.createElement('div');
     title.textContent = poem.title;
     title.style.transformOrigin = 'top left';
@@ -52,7 +38,10 @@ function addPoem(poem, container, scroll, scale, num){
     title.style.fontSize = '30px';
     title.style.whiteSpace = 'nowrap';
     title.style.fontFamily = 'charmonman';
-    
+    container.appendChild(title);
+}
+
+function addDate(container, poem, scroll, scale){
     const date = document.createElement('div');
     date.textContent = poem.date;
     date.style.transformOrigin = 'bottom right';
@@ -68,7 +57,10 @@ function addPoem(poem, container, scroll, scale, num){
     date.style.fontSize = '20px';
     date.style.whiteSpace = 'nowrap';
     date.style.fontFamily = 'charmonman';
-    
+    container.appendChild(date);
+}
+
+function addLink(container, poem, scroll, scale){
     const link = document.createElement('div');
     link.style.zIndex = 5;
     link.style.display = 'block';
@@ -78,14 +70,32 @@ function addPoem(poem, container, scroll, scale, num){
     link.style.left = (scale.x * scroll.closed.imageBeginsFromLeftInPixels) + 'px';
     link.style.opacity = '0.5';
     link.style.cursor = 'pointer';
-    
-    div.appendChild(title);
-    div.appendChild(date);
-    div.appendChild(link);
+    container.appendChild(link);
+}
+
+function addPoem(poem, container, scroll, scale, num) {
+    const div = document.createElement('div');
+    div.style.display = 'block';
+    div.style.position = 'absolute';
+    div.style.width = '17%';
+    div.style.maxHeight = '100%';
+    div.style.minHeight = '75%';
+    div.style.marginTop = 'auto';
+    div.style.marginBottom = 'auto';
+    div.style.zIndex = 3;
+    div.style.left = (num * 17) + '%';
+    div.style.bottom = '0px';
+    div.style.backgroundImage = 'url(../scroll/' + scroll.closed.linkToImage + ')';
+    div.style.backgroundSize = '100% 100%';
+
+    addTitle(div, poem);
+    addDate(div, poem, scroll, scale);
+    addLink(div, poem, scroll, scale);
+
     container.appendChild(div);
 }
 
-function addPoems(containerElementId, chest, poems, scroll, scale){
+function addPoems(containerElementId, chest, poems, scroll, scale) {
     const container = createPoemContainer(chest, poems, scale);
 
     poems.slice(-6).forEach((poem, i) => {
@@ -95,6 +105,6 @@ function addPoems(containerElementId, chest, poems, scroll, scale){
     document.getElementById(containerElementId).appendChild(container);
 }
 
-function addFireflies(containerElementId, chest, scale){
+function addFireflies(containerElementId, chest, scale) {
     addFireflyGroups(containerElementId, chest.open, scale.x, scale.y);
 }
