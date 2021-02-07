@@ -30,3 +30,7 @@ function addPoems(containerElementId, chest, poems, scale){
     const container = document.getElementById(containerElementId);
     container.appendChild(div);
 }
+
+function addFireflies(containerElementId, chest, scale){
+    addFireflyGroups(containerElementId, chest.open, scale);
+}

@@ -10,6 +10,7 @@
 <body>
     <div id="container"></div>
 
+    <script src="../fireflySettings.js"></script>
     <script src="../helpers.js"></script>
     <script src="poems.js"></script>
     <script src="poemspage.js"></script>
@@ -20,6 +21,7 @@
             const scalingFactor = calculateScaling(CHEST.open);
             addBackground('container', CHEST, scalingFactor);
             addPoems('container', CHEST, POEMS, scalingFactor);
+            addFireflies('container', CHEST, scalingFactor);
         });
     </script>
 </body>
