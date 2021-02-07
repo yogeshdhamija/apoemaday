@@ -98,7 +98,7 @@ function addRolledPoem(poem, container, scroll, scale, bodyId) {
     container.appendChild(div);
 }
 
-function addFlower(container, scroll, scale){
+function addFlower(container, scroll){
     const img = document.createElement('img');
     img.src = '../scroll/' + scroll.flower.linkToImage;
     img.style.position = 'absolute';
@@ -115,7 +115,7 @@ function addPoems(containerElementId, chest, poems, scroll, scale) {
     if(isToday(poems.last().date)){
         addRolledPoem(poems.last(), container, scroll, scale, containerElementId);
     }else{
-        addFlower(container, scroll, scale, 0);
+        addFlower(container, scroll);
     }
 
     document.getElementById(containerElementId).appendChild(container);
