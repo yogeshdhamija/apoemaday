@@ -32,7 +32,6 @@ const POEMS = [
     {
         linkToFile: "somber.md",
         title: "Somber",
-        // date: "2021-01-31"
-        date: Date.now()
+        date: "2021-01-31"
     }
 ]

@@ -60,7 +60,7 @@ function addDate(container, poem, scroll, scale){
     container.appendChild(date);
 }
 
-function addLink(container, poem, scroll, scale){
+function addLink(container, poem, scroll, scale, bodyId){
     const link = document.createElement('div');
     link.style.zIndex = 5;
     link.style.display = 'block';
@@ -69,10 +69,16 @@ function addLink(container, poem, scroll, scale){
     link.style.width = (scale.x * (scroll.closed.imageEndsFromLeftInPixels - scroll.closed.imageBeginsFromLeftInPixels)) + 'px';
     link.style.left = (scale.x * scroll.closed.imageBeginsFromLeftInPixels) + 'px';
     link.style.cursor = 'pointer';
+
+    link.onclick = function () {
+        document.getElementById(bodyId).style.opacity = 0;
+        window.setTimeout(() => window.location.href=poem.linkToFile, 1000);
+    }
+
     container.appendChild(link);
 }
 
-function addRolledPoem(poem, container, scroll, scale) {
+function addRolledPoem(poem, container, scroll, scale, bodyId) {
     const div = document.createElement('div');
     div.style.display = 'block';
     div.style.position = 'absolute';
@@ -87,7 +93,7 @@ function addRolledPoem(poem, container, scroll, scale) {
 
     addTitle(div, poem);
     addDate(div, poem, scroll, scale);
-    addLink(div, poem, scroll, scale);
+    addLink(div, poem, scroll, scale, bodyId);
 
     container.appendChild(div);
 }
@@ -108,7 +114,7 @@ function addPoems(containerElementId, chest, poems, scroll, scale) {
 
     const date = new Date(poems.last().date);
     if(isToday(date)){
-        addRolledPoem(poems.last(), container, scroll, scale, 0);
+        addRolledPoem(poems.last(), container, scroll, scale, containerElementId);
     }else{
         addFlower(container, scroll, scale, 0);
     }
