@@ -2,6 +2,15 @@ Array.prototype.random = function () {
     return this[Math.floor((Math.random() * this.length))];
 }
 
+Array.prototype.last = function() {
+    return this.slice(-1)[0];
+}
+
+function isToday(date) {
+    const now = new Date();
+    return date.getUTCDate() == now.getDate() && date.getUTCMonth() == now.getMonth() && date.getUTCFullYear() == now.getFullYear();
+}
+
 function clearAllTimeouts() {
     for (var i = setTimeout(function () { }, 0); i > 0; i--) {
         window.clearInterval(i);

@@ -68,22 +68,19 @@ function addLink(container, poem, scroll, scale){
     link.style.height = '100%';
     link.style.width = (scale.x * (scroll.closed.imageEndsFromLeftInPixels - scroll.closed.imageBeginsFromLeftInPixels)) + 'px';
     link.style.left = (scale.x * scroll.closed.imageBeginsFromLeftInPixels) + 'px';
-    link.style.opacity = '0.5';
     link.style.cursor = 'pointer';
     container.appendChild(link);
 }
 
-function addPoem(poem, container, scroll, scale, num) {
+function addRolledPoem(poem, container, scroll, scale) {
     const div = document.createElement('div');
     div.style.display = 'block';
     div.style.position = 'absolute';
-    div.style.width = '17%';
+    div.style.width = '25%';
     div.style.maxHeight = '100%';
-    div.style.minHeight = '75%';
-    div.style.marginTop = 'auto';
-    div.style.marginBottom = 'auto';
+    div.style.minHeight = '60%';
     div.style.zIndex = 3;
-    div.style.left = (num * 17) + '%';
+    div.style.left = '0px';
     div.style.bottom = '0px';
     div.style.backgroundImage = 'url(../scroll/' + scroll.closed.linkToImage + ')';
     div.style.backgroundSize = '100% 100%';
@@ -95,12 +92,26 @@ function addPoem(poem, container, scroll, scale, num) {
     container.appendChild(div);
 }
 
+function addFlower(container, scroll, scale){
+    const img = document.createElement('img');
+    img.src = '../scroll/' + scroll.flower.linkToImage;
+    img.style.position = 'absolute';
+    img.style.width = '25%';
+    img.style.zIndex = 4;
+    img.style.left = '0px';
+    img.style.bottom = '5%';
+    container.appendChild(img);
+}
+
 function addPoems(containerElementId, chest, poems, scroll, scale) {
     const container = createPoemContainer(chest, poems, scale);
 
-    poems.slice(-6).forEach((poem, i) => {
-        addPoem(poem, container, scroll, scale, i);
-    });
+    const date = new Date(poems.last().date);
+    if(isToday(date)){
+        addRolledPoem(poems.last(), container, scroll, scale, 0);
+    }else{
+        addFlower(container, scroll, scale, 0);
+    }
 
     document.getElementById(containerElementId).appendChild(container);
 }
