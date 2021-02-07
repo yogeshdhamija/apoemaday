@@ -5,5 +5,8 @@ const SCROLL = {
         heightInPixels: 2700,
         imageBeginsFromLeftInPixels: 60,
         imageEndsFromLeftInPixels: 480,
+    },
+    open: {
+        linkToImage: "open.png"
     }
 }
