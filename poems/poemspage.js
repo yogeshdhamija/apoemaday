@@ -53,7 +53,18 @@ function addPoem(poem, container, scroll, scale, num){
     title.style.whiteSpace = 'nowrap';
     title.style.fontFamily = 'charmonman';
     
+    const link = document.createElement('div');
+    link.style.zIndex = 5;
+    link.style.display = 'block';
+    link.style.position = 'absolute';
+    link.style.height = '100%';
+    link.style.width = (scale.x * (scroll.closed.imageEndsFromLeftInPixels - scroll.closed.imageBeginsFromLeftInPixels)) + 'px';
+    link.style.left = (scale.x * scroll.closed.imageBeginsFromLeftInPixels) + 'px';
+    link.style.opacity = '0.5';
+    link.style.cursor = 'pointer';
+    
     div.appendChild(title);
+    div.appendChild(link);
     container.appendChild(div);
 }
 
