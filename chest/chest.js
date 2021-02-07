@@ -8,7 +8,7 @@ const CHEST = {
             averageSizeInPixels: 12,
             sizeVariation: 8,
             averageBlurSizeInPixels: 2,
-            averageOffSeconds: 14,
+            averageOffSeconds: 25,
             offTimeVariation: 10
         },
         linkToImage: "inside.jpg",
@@ -33,7 +33,7 @@ const CHEST = {
             {
                 fireflyCount: 30,
                 pixelsFromTop: (0.2 * 3840),
-                pixelsFromLeft: (5760 - 300 - 700),
+                pixelsFromLeft: (5760 - 300 - 1000),
                 positionVariation: {
                     y: 200,
                     x: 300
@@ -41,7 +41,7 @@ const CHEST = {
             },
             {
                 fireflyCount: 10,
-                pixelsFromTop: (3840 - 200 - 600),
+                pixelsFromTop: (3840 - 200 - 800),
                 pixelsFromLeft: (0.3 * 5760),
                 positionVariation: {
                     y: 200,

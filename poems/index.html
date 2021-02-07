@@ -8,7 +8,7 @@
 </head>
 
 <body>
-    <div id="container"></div>
+    <div id="container" style="overflow:hidden; height:100%; width:100%;"></div>
 
     <script src="../fireflySettings.js"></script>
     <script src="../helpers.js"></script>
@@ -16,11 +16,12 @@
     <script src="poemspage.js"></script>
     <script src="../backgrounds/backgrounds.js"></script>
     <script src="../chest/chest.js"></script>
+    <script src="../scroll/scroll.js"></script>
     <script>
         doInPage("container", () => {
             const scale = calculateScaling(CHEST.open);
             addBackground('container', CHEST, scale);
-            addPoems('container', CHEST, POEMS, scale);
+            addPoems('container', CHEST, POEMS, SCROLL, scale);
             addFireflies('container', CHEST, scale);
         });
     </script>

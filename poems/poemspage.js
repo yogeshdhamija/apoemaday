@@ -14,7 +14,6 @@ function addBackground(containerElementId, chest, scale){
 
 function createPoemContainer(chest, poems, scale){
     const div = document.createElement('div');
-    div.innerText = poems;
     div.style.zIndex = 2;
     div.style.height = (scale.y * chest.open.bottomSurface.heightInPixels) + 'px';
     div.style.width = (scale.x * chest.open.bottomSurface.widthInPixels) + 'px';
@@ -25,10 +24,39 @@ function createPoemContainer(chest, poems, scale){
     return div;
 }
 
-function addPoems(containerElementId, chest, poems, scale){
-    const div = createPoemContainer(chest, poems, scale);
-    const container = document.getElementById(containerElementId);
+function addPoem(poem, container, scroll, scale, num){
+    const img = document.createElement('img');
+    img.src = '../scroll/' + scroll.closed.linkToImage;
+    img.style.display = 'block';
+    img.style.position = 'absolute';
+    img.style.width = '17%';
+    img.style.maxHeight = '100%';
+    img.style.minHeight = '75%';
+    img.style.marginTop = 'auto';
+    img.style.marginBottom = 'auto';
+    img.style.zIndex = 3;
+    img.style.left = (num * 17) + '%';
+    img.style.bottom = '0px';
+
+    const div = document.createElement('div');
+
+    div.appendChild(img);
     container.appendChild(div);
+}
+
+function addPoems(containerElementId, chest, poems, scroll, scale){
+    const container = createPoemContainer(chest, poems, scale);
+
+    poems.slice(-6).forEach((poem, i) => {
+        addPoem(poem, container, scroll, scale, i);
+        addPoem(poem, container, scroll, scale, i);
+        addPoem(poem, container, scroll, scale, i);
+        addPoem(poem, container, scroll, scale, i);
+        addPoem(poem, container, scroll, scale, i);
+        addPoem(poem, container, scroll, scale, i);
+    });
+
+    document.getElementById(containerElementId).appendChild(container);
 }
 
 function addFireflies(containerElementId, chest, scale){
