@@ -51,6 +51,7 @@ function addPoem(poem, container, scroll, scale, num){
     title.style.left = '10%';
     title.style.fontSize = '30px';
     title.style.whiteSpace = 'nowrap';
+    title.style.fontFamily = 'charmonman';
     
     div.appendChild(title);
     container.appendChild(div);
