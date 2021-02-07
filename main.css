@@ -7,6 +7,11 @@
     src: url(fonts/Charmonman-Regular.ttf)
 }
 
+::-webkit-scrollbar {
+    width: 0px;
+    background: transparent;
+}
+
 body {
     margin:0;
     border:0;
