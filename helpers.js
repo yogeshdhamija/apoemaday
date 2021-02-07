@@ -6,7 +6,8 @@ Array.prototype.last = function() {
     return this.slice(-1)[0];
 }
 
-function isToday(date) {
+function isToday(dateString) {
+    const date = new Date(dateString);
     const now = new Date();
     return date.getUTCDate() == now.getDate() && date.getUTCMonth() == now.getMonth() && date.getUTCFullYear() == now.getFullYear();
 }

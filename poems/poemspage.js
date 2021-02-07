@@ -112,8 +112,7 @@ function addFlower(container, scroll, scale){
 function addPoems(containerElementId, chest, poems, scroll, scale) {
     const container = createPoemContainer(chest, poems, scale);
 
-    const date = new Date(poems.last().date);
-    if(isToday(date)){
+    if(isToday(poems.last().date)){
         addRolledPoem(poems.last(), container, scroll, scale, containerElementId);
     }else{
         addFlower(container, scroll, scale, 0);
