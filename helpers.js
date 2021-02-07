@@ -6,6 +6,10 @@ Array.prototype.last = function() {
     return this.slice(-1)[0];
 }
 
+Array.prototype.secondLast = function() {
+    return this.slice(-2)[0];
+}
+
 function isToday(dateString) {
     const date = new Date(dateString);
     const now = new Date();

@@ -114,18 +114,70 @@ function addFlower(container, scroll){
 }
 
 function addStackedPoems(poems, container, scroll, scale, bodyId){
-    const div = document.createElement('div');
-    div.style.display = 'block';
-    div.style.position = 'absolute';
-    div.style.width = '50%';
-    div.style.maxHeight = '100%';
-    div.style.minHeight = '60%';
-    div.style.zIndex = 3;
-    div.style.left = '50%';
-    div.style.bottom = '0px';
-    div.style.backgroundImage = 'url(../scroll/' + scroll.stacked.linkToImage + ')';
-    div.style.backgroundSize = '100% 100%';
-    container.appendChild(div);
+    const stack = document.createElement('div');
+    stack.style.display = 'block';
+    stack.style.position = 'absolute';
+    stack.style.width = '50%';
+    stack.style.maxHeight = '100%';
+    stack.style.minHeight = '60%';
+    stack.style.zIndex = 3;
+    stack.style.left = '50%';
+    stack.style.bottom = '0px';
+    stack.style.backgroundImage = 'url(../scroll/' + scroll.stacked.linkToImage + ')';
+    stack.style.backgroundSize = '100% 100%';
+    
+    let poem;
+    if(isToday(poems.last().date)){
+        poem = poems.secondLast();
+    }else{
+        poem = poems.last();
+    }
+    
+    const poemElement = document.createElement('iframe');
+    poemElement.src = '../poems/' + poem.linkToFile;
+    poemElement.scroll = 'no';
+    poemElement.scrolling = 'no';
+    poemElement.style.display = 'block';
+    poemElement.style.position = 'absolute';
+    poemElement.style.width = (scale.x * (scroll.stacked.imageEndsFromLeftInPixels - scroll.stacked.imageBeginsFromLeftInPixels)) + 'px';
+    poemElement.style.height = (scale.y * (scroll.stacked.imageEndsFromTopInPixels - scroll.stacked.imageBeginsFromTopInPixels)) + 'px';
+    poemElement.style.top = (scale.y * scroll.stacked.imageBeginsFromTopInPixels) + 'px';
+    poemElement.style.left = (scale.x * scroll.stacked.imageBeginsFromLeftInPixels) + 'px';
+    poemElement.style.zIndex = 4;
+    poemElement.style.transform = 'rotate(3deg)';
+    poemElement.style.border = 'none';
+    poemElement.style.margin = 'none';
+    poemElement.style.padding = 'none';
+    poemElement.style.overflow = 'hidden';
+    stack.appendChild(poemElement);
+    
+    const shadow = document.createElement('div');
+    shadow.style.display = 'block';
+    shadow.style.position = 'absolute';
+    shadow.style.width = '0px';
+    shadow.style.height = '0px';
+    shadow.style.top = '35%';
+    shadow.style.left = '35%';
+    const offsetX = (((0.1 * scale.x * scroll.paperWeight.widthInPixels)/2) + 'px ');
+    const offsetY = (((0.1 * scale.y * scroll.paperWeight.heightInPixels)/2) + 'px ');
+    const spread = (((0.1 * scale.y * scroll.paperWeight.heightInPixels)/1.5) + 'px ')
+    shadow.style.boxShadow = offsetX + offsetY + spread + spread + 'black';
+    shadow.style.opacity = 0.6;
+    shadow.style.zIndex = 5;
+    stack.appendChild(shadow);
+
+    const weight = document.createElement('img');
+    weight.src = '../scroll/' + scroll.paperWeight.linkToImage;
+    weight.style.display = 'block';
+    weight.style.position = 'absolute';
+    weight.style.width = ((0.1 * scale.x * scroll.paperWeight.widthInPixels) + 'px');
+    weight.style.height = ((0.1 * scale.y * scroll.paperWeight.heightInPixels ) + 'px');
+    weight.style.left = '35%';
+    weight.style.top = '35%';
+    weight.style.zIndex = 6;
+    stack.appendChild(weight);
+
+    container.appendChild(stack);
 }
 
 function addPoems(containerElementId, chest, poems, scroll, scale) {

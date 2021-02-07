@@ -15,7 +15,13 @@ const SCROLL = {
         linkToImage: "open.png"
     },
     stacked: {
-        linkToImage: "stacked.png"
+        linkToImage: "stacked.png",
+        widthInPixels: 3000,
+        heightInPixels: 4188,
+        imageBeginsFromLeftInPixels: 300,
+        imageEndsFromLeftInPixels: 1700,
+        imageBeginsFromTopInPixels: 200,
+        imageEndsFromTopInPixels: 1400,
     },
     paperWeight: {
         linkToImage: "stone.png",
