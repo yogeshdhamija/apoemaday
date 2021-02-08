@@ -13,7 +13,7 @@ const BACKGROUNDS = [
         },
         fireflyGroups: [
             {
-                fireflyCount: 120,
+                fireflyCount: 180,
                 pixelsFromTop: (765 - 150),
                 pixelsFromLeft: (200 + (200 / 2)),
                 positionVariation: {
@@ -31,7 +31,7 @@ const BACKGROUNDS = [
                 }
             },
             {
-                fireflyCount: 70,
+                fireflyCount: 40,
                 pixelsFromTop:400,
                 pixelsFromLeft:900,
                 positionVariation: {
@@ -40,7 +40,7 @@ const BACKGROUNDS = [
                 }
             },
             {
-                fireflyCount: 70,
+                fireflyCount: 40,
                 pixelsFromTop:800,
                 pixelsFromLeft:1600,
                 positionVariation: {

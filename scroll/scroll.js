@@ -1,21 +1,21 @@
 const SCROLL = {
     closed: {
-        linkToImage: "rolled.png",
+        linkToImage: "rolled-min.png",
         widthInPixels: 750,
         heightInPixels: 2700,
         imageBeginsFromLeftInPixels: 80,
         imageEndsFromLeftInPixels: 700,
     },
     flower: {
-        linkToImage: "peony.png",
+        linkToImage: "peony-min.png",
         widthInPixels: 3840,
         heightInPixels: 3840,
     },
     open: {
-        linkToImage: "open.png"
+        linkToImage: "open-min.png"
     },
     stacked: {
-        linkToImage: "stacked.png",
+        linkToImage: "stacked-min.png",
         widthInPixels: 3000,
         heightInPixels: 4188,
         imageBeginsFromLeftInPixels: 300,
@@ -24,7 +24,7 @@ const SCROLL = {
         imageEndsFromTopInPixels: 1400,
     },
     paperWeight: {
-        linkToImage: "stone.png",
+        linkToImage: "stone-min.png",
         widthInPixels: 5000,
         heightInPixels: 3155,
     }

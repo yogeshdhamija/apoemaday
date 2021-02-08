@@ -11,7 +11,7 @@ const CHEST = {
             averageOffSeconds: 25,
             offTimeVariation: 10
         },
-        linkToImage: "inside.jpg",
+        linkToImage: "inside-min.jpg",
         widthInPixels: 5760,
         heightInPixels: 3840,
         bottomSurface: {
