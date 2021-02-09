@@ -30,7 +30,7 @@ const POEMS = [
         date: "2021-01-23"
     },
     {
-        linkToFile: "somber.md",
+        linkToFile: "somber.html",
         title: "Somber",
         date: "2021-01-31"
     }
