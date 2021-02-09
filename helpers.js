@@ -25,11 +25,13 @@ function clearAllTimeouts() {
 }
 
 function doInPage(containerElementId, actions) {
-    window.addEventListener('resize', () => {
+    const reload = function() {
         document.getElementById(containerElementId).innerHTML = "";
         clearAllTimeouts();
         actions();
-    });
+    }
+    window.addEventListener('resize', reload);
+    window.addEventListener('hashchange', reload);
     actions();
 }
 

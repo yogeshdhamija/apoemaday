@@ -134,14 +134,14 @@ function addStackedPoems(poems, container, scroll, scale, bodyId) {
 
     const weight = createPaperWeightElement(scroll, scale);
     stack.appendChild(weight);
-    
-    const linkElement = createLinkElement(bodyId);
+
+    const linkElement = createLinkToStackPoem(bodyId, poems);
     stack.appendChild(linkElement);
 
     container.appendChild(stack);
 }
 
-function createLinkElement(bodyId) {
+function createLinkToStackPoem(bodyId, poems) {
     const linkElement = document.createElement('div');
     linkElement.style.zIndex = 7;
     linkElement.style.display = 'block';
@@ -149,31 +149,33 @@ function createLinkElement(bodyId) {
     linkElement.style.height = '100%';
     linkElement.style.width = '100%';
     linkElement.style.cursor = 'pointer';
-    link(linkElement, bodyId, '../old-poems');
+    link(linkElement, bodyId, getPoemForStack(poems).linkToFile);
     return linkElement;
 }
 
 function createPaperWeightElement(scroll, scale) {
+    const onPaper = !window.location.hash;
     const weight = document.createElement('img');
     weight.src = '../scroll/' + scroll.paperWeight.linkToImage;
     weight.style.display = 'block';
     weight.style.position = 'absolute';
     weight.style.width = ((0.1 * scale.x * scroll.paperWeight.widthInPixels) + 'px');
     weight.style.height = ((0.1 * scale.y * scroll.paperWeight.heightInPixels) + 'px');
-    weight.style.left = '35%';
-    weight.style.top = '35%';
+    weight.style.left = onPaper ? '35%' : '-15%';
+    weight.style.top = onPaper ? '35%' : '-15%';
     weight.style.zIndex = 6;
     return weight;
 }
 
 function createShadowElement(scale, scroll) {
+    const onPaper = !window.location.hash;
     const shadow = document.createElement('div');
     shadow.style.display = 'block';
     shadow.style.position = 'absolute';
     shadow.style.width = '0px';
     shadow.style.height = '0px';
-    shadow.style.top = '35%';
-    shadow.style.left = '35%';
+    shadow.style.top = onPaper ? '35%' : '-15%';
+    shadow.style.left = onPaper ? '35%' : '-15%';
     const offsetX = (((0.1 * scale.x * scroll.paperWeight.widthInPixels) / 2) + 'px ');
     const offsetY = (((0.1 * scale.y * scroll.paperWeight.heightInPixels) / 2) + 'px ');
     const spread = (((0.1 * scale.y * scroll.paperWeight.heightInPixels) / 1.5) + 'px ');
@@ -183,16 +185,22 @@ function createShadowElement(scale, scroll) {
     return shadow;
 }
 
-function createStackedPoemElement(poems, scale, scroll) {
-    let poem;
-    if (isToday(poems.last().date)) {
-        poem = poems.secondLast();
+function getPoemForStack(poems){
+    const hash = window.location.hash.slice(1);
+    if (hash) {
+        return poems[hash];
     } else {
-        poem = poems.last();
+        if (isToday(poems.last().date)) {
+           return poems.secondLast();
+        } else {
+            return poems.last();
+        }
     }
+}
 
+function createStackedPoemElement(poems, scale, scroll) {
     const poemElement = document.createElement('iframe');
-    poemElement.src = '../poems/' + poem.linkToFile;
+    poemElement.src = '../poems/' + getPoemForStack(poems).linkToFile;
     poemElement.scroll = 'no';
     poemElement.scrolling = 'no';
     poemElement.style.display = 'block';
