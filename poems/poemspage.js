@@ -229,15 +229,11 @@ function createShadowElement(scale, scroll) {
 
 function getPoemForStack(poems) {
     const hash = window.location.hash.slice(1);
-    if (hash) {
-        return poems[hash];
-    } else {
-        if (isToday(poems.last().date)) {
-            return poems.secondLast();
-        } else {
-            return poems.last();
-        }
-    }
+    return hash
+        ? poems[hash]
+        : isToday(poems.last().date)
+            ? poems.secondLast()
+            : poems.last();
 }
 
 function createStackedPoemElement(poems, scale, scroll) {
