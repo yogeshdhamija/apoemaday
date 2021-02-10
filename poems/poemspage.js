@@ -67,6 +67,13 @@ function link(element, bodyId, link) {
     };
 }
 
+function changeHash(element, bodyId, hash) {
+    element.onclick = function () {
+        document.getElementById(bodyId).style.opacity = 0;
+        window.setTimeout(() => window.location.hash = hash, 1000);
+    };
+}
+
 function addLink(container, poem, scroll, scale, bodyId) {
     const element = document.createElement('div');
     element.style.zIndex = 5;
@@ -135,21 +142,56 @@ function addStackedPoems(poems, container, scroll, scale, bodyId) {
     const weight = createPaperWeightElement(scroll, scale);
     stack.appendChild(weight);
 
-    const linkElement = createLinkToStackPoem(bodyId, poems);
-    stack.appendChild(linkElement);
+    const topLink = createLinkToStackPoem(bodyId, poems, scroll, scale);
+    stack.appendChild(topLink);
+
+    const sideLink = createLinkToShowOlderPoem(bodyId, poems, scroll, scale);
+    stack.appendChild(sideLink);
 
     container.appendChild(stack);
 }
 
-function createLinkToStackPoem(bodyId, poems) {
+function createLinkToShowOlderPoem(bodyId, poems, scroll, scale) {
+    const e = document.createElement('div');
+    e.style.zIndex = 7;
+    e.style.display = 'block';
+    e.style.position = 'absolute';
+    e.style.width = '100%';
+    e.style.height = '100%';
+    e.style.cursor = 'zoom-in';
+    e.style.top = '0px'
+    e.style.left = '0px';
+    e.style.transform = 'rotate(3deg)';
+
+    const current = window.location.hash?.slice(1);
+
+    const hash = current
+        ? parseInt(current) > 1
+            ? parseInt(current) - 1
+            : ""
+        : isToday(poems.last().date)
+            ? poems.length - 3
+            : poems.length - 2;
+
+    changeHash(e, bodyId, hash);
+
+    return e;
+}
+
+function createLinkToStackPoem(bodyId, poems, scroll, scale) {
     const linkElement = document.createElement('div');
-    linkElement.style.zIndex = 7;
+    linkElement.style.zIndex = 8;
     linkElement.style.display = 'block';
     linkElement.style.position = 'absolute';
-    linkElement.style.height = '100%';
-    linkElement.style.width = '100%';
+    linkElement.style.width = (scale.x * (scroll.stacked.imageEndsFromLeftInPixels - scroll.stacked.imageBeginsFromLeftInPixels)) + 'px';
+    linkElement.style.height = (scale.y * (scroll.stacked.imageEndsFromTopInPixels - scroll.stacked.imageBeginsFromTopInPixels)) + 'px';
     linkElement.style.cursor = 'pointer';
+    linkElement.style.top = (scale.y * scroll.stacked.imageBeginsFromTopInPixels) + 'px';
+    linkElement.style.left = (scale.x * scroll.stacked.imageBeginsFromLeftInPixels) + 'px';
+    linkElement.style.transform = 'rotate(3deg)';
+
     link(linkElement, bodyId, getPoemForStack(poems).linkToFile);
+
     return linkElement;
 }
 
@@ -185,13 +227,13 @@ function createShadowElement(scale, scroll) {
     return shadow;
 }
 
-function getPoemForStack(poems){
+function getPoemForStack(poems) {
     const hash = window.location.hash.slice(1);
     if (hash) {
         return poems[hash];
     } else {
         if (isToday(poems.last().date)) {
-           return poems.secondLast();
+            return poems.secondLast();
         } else {
             return poems.last();
         }
