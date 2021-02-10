@@ -63,14 +63,14 @@ function addDate(container, poem, scroll, scale) {
 function link(element, bodyId, link) {
     element.onclick = function () {
         document.getElementById(bodyId).style.opacity = 0;
-        window.setTimeout(() => window.location.href = link, 1000);
+        window.setTimeout(() => window.location.href = link, 500);
     };
 }
 
 function changeHash(element, bodyId, hash) {
     element.onclick = function () {
         document.getElementById(bodyId).style.opacity = 0;
-        window.setTimeout(() => window.location.hash = hash, 1000);
+        window.setTimeout(() => window.location.hash = hash, 500);
     };
 }
 
