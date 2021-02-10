@@ -206,6 +206,7 @@ function createPaperWeightElement(scroll, scale) {
     weight.style.left = onPaper ? '35%' : '-15%';
     weight.style.top = onPaper ? '35%' : '-15%';
     weight.style.zIndex = 6;
+    weight.style.transform = 'rotate('+ vary(180, 180) +'deg)';
     return weight;
 }
 
