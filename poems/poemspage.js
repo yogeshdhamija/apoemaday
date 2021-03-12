@@ -74,6 +74,10 @@ function changeHash(element, bodyId, hash) {
     };
 }
 
+function linkToOpenPoem(element, bodyId, poemFile) {
+    link(element, bodyId, 'open.html#'+poemFile);
+}
+
 function addLink(container, poem, scroll, scale, bodyId) {
     const element = document.createElement('div');
     element.style.zIndex = 5;
@@ -84,7 +88,7 @@ function addLink(container, poem, scroll, scale, bodyId) {
     element.style.left = (scale.x * scroll.closed.imageBeginsFromLeftInPixels) + 'px';
     element.style.cursor = 'pointer';
 
-    link(element, bodyId, poem.linkToFile);
+    linkToOpenPoem(element, bodyId, poem.linkToFile);
 
     container.appendChild(element);
 }
@@ -190,7 +194,7 @@ function createLinkToStackPoem(bodyId, poems, scroll, scale) {
     linkElement.style.left = (scale.x * scroll.stacked.imageBeginsFromLeftInPixels) + 'px';
     linkElement.style.transform = 'rotate(3deg)';
 
-    link(linkElement, bodyId, getPoemForStack(poems).linkToFile);
+    linkToOpenPoem(linkElement, bodyId, getPoemForStack(poems).linkToFile);
 
     return linkElement;
 }

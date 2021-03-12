@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Poem</title>
+    <link rel="icon" href="../favicon.ico" type="image/x-icon" />
+    <link rel="stylesheet" href="../main.css" />
+</head>
+
+<body>
+    <div id="container" style="overflow:hidden; height:100%; width:100%;"></div>
+
+    <script src="../fireflySettings.js"></script>
+    <script src="../helpers.js"></script>
+    <script src="openpoempage.js"></script>
+    <script src="../backgrounds/backgrounds.js"></script>
+    <script src="../chest/chest.js"></script>
+    <script src="../scroll/scroll.js"></script>
+    <script>
+        doInPage("container", () => {
+            const hash = window.location.hash.slice(1);
+            addPoem('container', SCROLL, hash);
+            const scale = calculateScaling(BACKGROUNDS.near);
+            addBackground('container', BACKGROUNDS.near, scale);
+            addChest("container", BACKGROUNDS.near, CHEST, scale);
+            addFireflies('container', scale);
+        });
+    </script>
+</body>
+
+</html>
+

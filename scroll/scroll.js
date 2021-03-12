@@ -12,7 +12,7 @@ const SCROLL = {
         heightInPixels: 3840,
     },
     open: {
-        linkToImage: "open-min.png"
+        linkToImage: "unrolled-min.png"
     },
     stacked: {
         linkToImage: "stacked-min.png",

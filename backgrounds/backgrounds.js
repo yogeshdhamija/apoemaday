@@ -1,5 +1,5 @@
-const BACKGROUNDS = [
-    {
+const BACKGROUNDS = {
+    far: {
         name: "creek",
         linkToImage: "creek.jpg",
         fireflySettings: DEFAULT_FIREFLY_SETTINGS,
@@ -23,17 +23,17 @@ const BACKGROUNDS = [
             },
             {
                 fireflyCount: 20,
-                pixelsFromTop:1280/2,
-                pixelsFromLeft:1920/2,
+                pixelsFromTop: 1280 / 2,
+                pixelsFromLeft: 1920 / 2,
                 positionVariation: {
-                    y: (1280/2) - 50,
-                    x: (1920/2) - 50
+                    y: (1280 / 2) - 50,
+                    x: (1920 / 2) - 50
                 }
             },
             {
                 fireflyCount: 40,
-                pixelsFromTop:400,
-                pixelsFromLeft:900,
+                pixelsFromTop: 400,
+                pixelsFromLeft: 900,
                 positionVariation: {
                     y: 120,
                     x: 80
@@ -41,8 +41,8 @@ const BACKGROUNDS = [
             },
             {
                 fireflyCount: 40,
-                pixelsFromTop:800,
-                pixelsFromLeft:1600,
+                pixelsFromTop: 800,
+                pixelsFromLeft: 1600,
                 positionVariation: {
                     y: 120,
                     x: 80
@@ -50,4 +50,4 @@ const BACKGROUNDS = [
             },
         ]
     }
-]
+}

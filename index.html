@@ -17,12 +17,11 @@
     <script src="chest/chest.js"></script>
     <script src="scroll/scroll.js"></script>
     <script>
-        const BACKGROUND = BACKGROUNDS.random();
         doInPage("container", () => {
-            const scale = calculateScaling(BACKGROUND);
-            addBackground("container", BACKGROUND, scale.combined);
-            addChest("container", BACKGROUND, CHEST, scale.combined);
-            addFireflies("container", BACKGROUND, scale);
+            const scale = calculateScaling(BACKGROUNDS.far);
+            addBackground("container", BACKGROUNDS.far, scale.combined);
+            addChest("container", BACKGROUNDS.far, CHEST, scale.combined);
+            addFireflies("container", BACKGROUNDS.far, scale);
         });
     </script>
 </body>
