@@ -75,7 +75,8 @@ function changeHash(element, bodyId, hash) {
 }
 
 function linkToOpenPoem(element, bodyId, poemFile) {
-    link(element, bodyId, 'open#'+poemFile);
+    const withoutHtmlExtension = poemFile.slice(0,-5);
+    link(element, bodyId, 'open#'+withoutHtmlExtension);
 }
 
 function addLink(container, poem, scroll, scale, bodyId) {
@@ -88,8 +89,7 @@ function addLink(container, poem, scroll, scale, bodyId) {
     element.style.left = (scale.x * scroll.closed.imageBeginsFromLeftInPixels) + 'px';
     element.style.cursor = 'pointer';
 
-    const withoutHtmlExtension = poem.linkToFile.slice(0,-5);
-    linkToOpenPoem(element, bodyId, withoutHtmlExtension);
+    linkToOpenPoem(element, bodyId, poem.linkToFile);
 
     container.appendChild(element);
 }
