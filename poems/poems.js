@@ -1,31 +1,31 @@
 const POEMS = [
     {
-        linkToFile: "in-your-wake.md",
+        linkToFile: "in-your-wake.html",
         title: "In Your Wake",
         date: "2021-01-17"
     },
     {
-        linkToFile: "hearth.md",
+        linkToFile: "hearth.html",
         title: "Hearth",
         date: "2021-01-18"
     },
     {
-        linkToFile: "blue.md",
+        linkToFile: "blue.html",
         title: "Blue",
         date: "2021-01-19"
     },
     {
-        linkToFile: "petrichor.md",
+        linkToFile: "petrichor.html",
         title: "Petrichor",
         date: "2021-01-20"
     },
     {
-        linkToFile: "drool-with-me.md",
+        linkToFile: "drool-with-me.html",
         title: "Drool With Me",
         date: "2021-01-21"
     },
     {
-        linkToFile: "shayeri.md",
+        linkToFile: "shayeri.html",
         title: "Shayeri",
         date: "2021-01-23"
     },
