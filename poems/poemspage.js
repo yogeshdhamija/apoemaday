@@ -147,6 +147,9 @@ function addStackedPoems(poems, container, scroll, scale, bodyId) {
     const weight = createPaperWeightElement(scroll, scale);
     stack.appendChild(weight);
 
+    const olderPoems = createOlderPoemsStackElement(bodyId, scroll, scale);
+    stack.appendChild(olderPoems);
+
     const topLink = createLinkToStackPoem(bodyId, poems, scroll, scale);
     stack.appendChild(topLink);
 
@@ -154,6 +157,29 @@ function addStackedPoems(poems, container, scroll, scale, bodyId) {
     stack.appendChild(sideLink);
 
     container.appendChild(stack);
+}
+
+function createOlderPoemsStackElement(bodyId, scroll, scale){
+    const shouldAppear = window.location.hash;
+    const element = document.createElement('div');
+    if(shouldAppear) {
+        element.style.display = 'block';
+        element.style.position = 'absolute';
+        element.style.width = '60%';
+        element.style.height = '60%';
+        element.style.zIndex = 4;
+        element.style.left = '-45%';
+        element.style.top = '-45%';
+        element.style.backgroundImage = 'url(../scroll/' + scroll.stacked.linkToImage + ')';
+        element.style.backgroundSize = '100% 100%';
+        element.style.transform = 'rotate('+vary(10, 215)+'deg)';
+        element.style.cursor = 'alias';
+        element.onclick = function () {
+            document.getElementById(bodyId).style.opacity = 0;
+            window.setTimeout(() => window.location.hash = '', 500);
+        };
+    }
+    return element;
 }
 
 function createLinkToShowOlderPoem(bodyId, poems, scroll, scale) {
@@ -208,8 +234,8 @@ function createPaperWeightElement(scroll, scale) {
     weight.style.position = 'absolute';
     weight.style.width = ((0.1 * scale.x * scroll.paperWeight.widthInPixels) + 'px');
     weight.style.height = ((0.1 * scale.y * scroll.paperWeight.heightInPixels) + 'px');
-    weight.style.left = onPaper ? '35%' : '-15%';
-    weight.style.top = onPaper ? '35%' : '-15%';
+    weight.style.left = onPaper ? '35%' : '-25%';
+    weight.style.top = onPaper ? '35%' : '-25%';
     weight.style.zIndex = 6;
     weight.style.transform = 'rotate('+ vary(180, 180) +'deg)';
     return weight;
@@ -222,8 +248,8 @@ function createShadowElement(scale, scroll) {
     shadow.style.position = 'absolute';
     shadow.style.width = '0px';
     shadow.style.height = '0px';
-    shadow.style.top = onPaper ? '35%' : '-15%';
-    shadow.style.left = onPaper ? '35%' : '-15%';
+    shadow.style.top = onPaper ? '35%' : '-25%';
+    shadow.style.left = onPaper ? '35%' : '-25%';
     const offsetX = (((0.1 * scale.x * scroll.paperWeight.widthInPixels) / 2) + 'px ');
     const offsetY = (((0.1 * scale.y * scroll.paperWeight.heightInPixels) / 2) + 'px ');
     const spread = (((0.1 * scale.y * scroll.paperWeight.heightInPixels) / 1.5) + 'px ');
