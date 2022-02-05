@@ -174,10 +174,7 @@ function createOlderPoemsStackElement(bodyId, scroll, scale){
         element.style.backgroundSize = '100% 100%';
         element.style.transform = 'rotate('+vary(10, 215)+'deg)';
         element.style.cursor = 'alias';
-        element.onclick = function () {
-            document.getElementById(bodyId).style.opacity = 0;
-            window.setTimeout(() => window.location.hash = '', 500);
-        };
+        changeHash(element, bodyId, "");
     }
     return element;
 }
