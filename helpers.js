@@ -31,15 +31,18 @@ function clearAllTimeouts() {
     }
 }
 
-function doInPage(containerElementId, actions) {
+function doInPage(containerElementId, callback) {
     const reload = function() {
-        document.getElementById(containerElementId).innerHTML = "";
+        const container = document.getElementById(containerElementId);
+        container.innerHTML = "";
+        container.style.opacity = 1;
         clearAllTimeouts();
-        actions();
+        callback();
     }
     window.addEventListener('resize', reload);
     window.addEventListener('hashchange', reload);
-    actions();
+    window.addEventListener('popstate', reload);
+    callback();
 }
 
 function calculateScaling(background) {
