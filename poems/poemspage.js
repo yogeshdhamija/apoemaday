@@ -61,17 +61,11 @@ function addDate(container, poem, scroll, scale) {
 }
 
 function link(element, bodyId, link) {
-    element.onclick = function () {
-        document.getElementById(bodyId).style.opacity = 0;
-        window.setTimeout(() => window.location.href = link, 500);
-    };
+    element.onclick = () => dimContainerAndPerformCallback(bodyId, () => window.location.href = link)
 }
 
 function changeHash(element, bodyId, hash) {
-    element.onclick = function () {
-        document.getElementById(bodyId).style.opacity = 0;
-        window.setTimeout(() => window.location.hash = hash, 500);
-    };
+    element.onclick = () => dimContainerAndPerformCallback(bodyId, () => window.location.hash = hash)
 }
 
 function linkToOpenPoem(element, bodyId, poemFile) {

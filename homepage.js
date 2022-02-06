@@ -22,12 +22,9 @@ function addChest(elementId, background, chest, scale) {
     img.style.height = (scale * (background.chest.heightInPixels)) + 'px';
     img.style.zIndex = 2;
     img.style.cursor = 'zoom-in';
+    img.onclick = () => dimContainerAndPerformCallback(elementId, () => window.location.href="poems");
     const container = document.getElementById(elementId);
     container.appendChild(img);
-    img.onclick = function () {
-        container.style.opacity = 0;
-        window.setTimeout(() => window.location.href="poems", 1000);
-    }
 }
 
 function addFireflies(elementId, background, scale) {

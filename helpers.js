@@ -10,6 +10,13 @@ Array.prototype.secondLast = function() {
     return this.slice(-2)[0];
 }
 
+function dimContainerAndPerformCallback(containerElementId, callback) {
+    const container = document.getElementById(containerElementId);
+    container.style.opacity = 0;
+    const opacityChangeTimeSetInCss = 1000;
+    window.setTimeout(callback, opacityChangeTimeSetInCss/2);
+}
+
 function isToday(dateString) {
     const date = new Date(dateString);
     const now = new Date();
