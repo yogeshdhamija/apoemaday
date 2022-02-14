@@ -37,13 +37,13 @@
         const backgroundAudio = document.getElementById("backgroundAudio");
         backgroundAudio.volume = 0.1;
         backgroundAudio.muted = false;
-        backgroundAudio.play();
+        window.setInterval(() => backgroundAudio.play(), 1);
     </script>
     <script>
         const musicAudio = document.getElementById("musicAudio");
         musicAudio.volume = 0.2;
         musicAudio.muted = false;
-        musicAudio.play();
+        window.setInterval(() => musicAudio.play(), 1);
     </script>
 </body>
 
