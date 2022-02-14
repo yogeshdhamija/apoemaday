@@ -38,5 +38,10 @@ const POEMS = [
         linkToFile: "two-paces-away.html",
         title: "Two Paces Away",
         date: "2021-03-19"
+    },
+    {
+        linkToFile: "the-next-day.html",
+        title: "The Next Day",
+        date: "2022-02-14"
     }
 ]
