@@ -38,15 +38,14 @@ function doInPage(containerElementId, callback) {
         container.innerHTML = "";
         container.style.opacity = '1';
         clearAllTimeouts();
+        window.setInterval(() => {
+            container.style.opacity = '1';
+        }, 2000);
         callback();
     }
     window.addEventListener('resize', reload);
     window.addEventListener('hashchange', reload);
-
-    window.addEventListener('load', () => {
-        container.style.opacity = '1';
-    });
-    callback();
+    reload();
 }
 
 function calculateScaling(background) {
