@@ -2,19 +2,19 @@ Array.prototype.random = function () {
     return this[Math.floor((Math.random() * this.length))];
 }
 
-Array.prototype.last = function() {
+Array.prototype.last = function () {
     return this.slice(-1)[0];
 }
 
-Array.prototype.secondLast = function() {
+Array.prototype.secondLast = function () {
     return this.slice(-2)[0];
 }
 
 function dimContainerAndPerformCallback(containerElementId, callback) {
     const container = document.getElementById(containerElementId);
-    container.style.opacity = 0;
+    container.style.opacity = '0';
     const opacityChangeTimeSetInCss = 1000;
-    window.setTimeout(callback, opacityChangeTimeSetInCss/2);
+    window.setTimeout(callback, opacityChangeTimeSetInCss / 2);
 }
 
 function isToday(dateString) {
@@ -24,7 +24,8 @@ function isToday(dateString) {
 }
 
 function clearAllTimeouts() {
-    for (var i = setTimeout(function () { }, 0); i > 0; i--) {
+    for (var i = setTimeout(function () {
+    }, 0); i > 0; i--) {
         window.clearInterval(i);
         window.clearTimeout(i);
         if (window.cancelAnimationFrame) window.cancelAnimationFrame(i);
@@ -32,16 +33,19 @@ function clearAllTimeouts() {
 }
 
 function doInPage(containerElementId, callback) {
-    const reload = function() {
+    const reload = function () {
         const container = document.getElementById(containerElementId);
         container.innerHTML = "";
-        container.style.opacity = 1;
+        container.style.opacity = '1';
         clearAllTimeouts();
         callback();
     }
     window.addEventListener('resize', reload);
     window.addEventListener('hashchange', reload);
-    window.addEventListener('popstate', reload);
+
+    window.addEventListener('load', () => {
+        container.style.opacity = '1';
+    });
     callback();
 }
 
@@ -54,7 +58,7 @@ function calculateScaling(background) {
     } else {
         combined = x;
     }
-    return { y, x, combined }
+    return {y, x, combined}
 }
 
 function randomBetween(smaller, larger) {
