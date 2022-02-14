@@ -26,10 +26,15 @@
         });
     </script>
 
-    <audio autoplay loop>
+    <audio autoplay loop id="backgroundAudio">
         <source src="../audio/forest.wav" type="audio/wav">
         <source src="../audio/forest.ogg" type="audio/ogg">
     </audio>
+
+    <script>
+        const audio = document.getElementById("backgroundAudio");
+        audio.volume = 0.25;
+    </script>
 </body>
 
 
