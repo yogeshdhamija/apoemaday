@@ -25,21 +25,23 @@
         });
     </script>
 
-    <audio autoplay loop id="backgroundAudio">
+    <audio autoplay muted loop id="backgroundAudio">
         <source src="./audio/forest.wav" type="audio/wav">
         <source src="./audio/forest.ogg" type="audio/ogg">
     </audio>
-    <audio autoplay loop id="musicAudio">
+    <audio autoplay muted loop id="musicAudio">
         <source src="./audio/music.mp3" type="audio/mpeg">
     </audio>
 
     <script>
         const audio = document.getElementById("backgroundAudio");
         audio.volume = 0.1;
+        audio.muted = false;
     </script>
     <script>
         const audio = document.getElementById("musicAudio");
         audio.volume = 0.2;
+        audio.muted = false;
     </script>
 </body>
 
