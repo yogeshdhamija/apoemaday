@@ -36,8 +36,8 @@ function doInPage(containerElementId, callback) {
     const reload = function () {
         const container = document.getElementById(containerElementId);
         container.innerHTML = "";
-        container.style.opacity = '1';
         clearAllTimeouts();
+        container.style.opacity = '1';
         window.setInterval(() => {
             container.style.opacity = '1';
         }, 2000);
