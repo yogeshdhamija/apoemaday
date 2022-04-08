@@ -25,6 +25,27 @@
             addFireflies('container', CHEST, scale);
         });
     </script>
+
+    <audio autoplay muted loop id="backgroundAudio">
+        <source src="../audio/forest.wav" type="audio/wav">
+        <source src="../audio/forest.ogg" type="audio/ogg">
+    </audio>
+    <audio autoplay muted loop id="musicAudio">
+        <source src="../audio/music.mp3" type="audio/mpeg">
+    </audio>
+
+    <script>
+        const backgroundAudio = document.getElementById("backgroundAudio");
+        backgroundAudio.volume = 0.1;
+        backgroundAudio.muted = false;
+        window.setInterval(() => backgroundAudio.play(), 1);
+    </script>
+    <script>
+        const musicAudio = document.getElementById("musicAudio");
+        musicAudio.volume = 0.2;
+        musicAudio.muted = false;
+        window.setInterval(() => musicAudio.play(), 1);
+    </script>
 </body>
 
 
